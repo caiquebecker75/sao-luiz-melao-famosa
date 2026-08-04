@@ -382,30 +382,67 @@ strong{font-weight:600;color:var(--white)}
 .piece .pm{display:inline-block;margin-top:7px;font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.11em;
   color:var(--gold);background:var(--gold-soft);border-radius:100px;padding:4px 10px}
 
-/* 08 ATIVAÇÕES */
-.act{border-radius:var(--radius);padding:clamp(16px,1.55vw,28px);background:var(--card);border:1px solid var(--card-brd);
-  display:flex;flex-direction:column;gap:clamp(11px,1.1vw,17px);transition:.4s;position:relative;overflow:hidden}
-.act:hover{transform:translateY(-6px);border-color:rgba(168,220,75,.45)}
-.act::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--lime),transparent);animation:sweepbar 3.2s ease-in-out infinite}
-@keyframes sweepbar{0%,100%{transform:translateX(-100%)}50%{transform:translateX(0)}}
-.act-h{display:flex;align-items:center;gap:13px}
-.act-logo{height:clamp(19px,1.65vw,26px);width:auto;margin-left:auto;opacity:.95;flex:none;animation:afloat 4.2s ease-in-out infinite}
-.destaque{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
-  font-size:clamp(11px,.92vw,15px);font-weight:700;letter-spacing:.06em;color:#0A2044;
-  background:linear-gradient(100deg,var(--lime) 0%,#B7E356 100%);padding:8px 16px;border-radius:100px;
-  box-shadow:0 8px 22px rgba(140,198,63,.24)}
-.destaque .ico{width:17px;height:17px}
-.act-n{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.2em;color:var(--muted-dim)}
-.act-t{font-size:clamp(14px,1.22vw,20px);font-weight:700;letter-spacing:.02em;line-height:1.15}
-.act ul{display:flex;flex-direction:column;gap:8px}
-.act li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:clamp(11px,.86vw,14.5px);
-  font-weight:300;color:var(--muted);line-height:1.45}
-.act li b{color:var(--white);font-weight:600;white-space:nowrap}
-.act li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lime);flex:none;margin-top:7px;
-  animation:apulse 2.4s ease-in-out infinite}
-.act-foot{margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+/* 08 ATIVAÇÕES — layout editorial */
+.acts-head{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(20px,3vw,60px);
+  flex-wrap:wrap;margin-bottom:clamp(14px,1.7vw,26px)}
+.acts-lead{font-size:clamp(11.5px,.9vw,15px);font-weight:300;color:var(--muted);line-height:1.5;
+  padding-left:clamp(14px,1.3vw,22px);border-left:2px solid var(--gold);max-width:42ch}
+.acts{display:flex;flex-direction:column}
+.act-row{
+  display:grid;grid-template-columns:clamp(56px,5.4vw,96px) minmax(0,1fr) auto;
+  align-items:center;gap:clamp(16px,1.9vw,36px);
+  padding:clamp(13px,1.35vw,24px) 0;border-top:1px solid rgba(255,255,255,.11);
+  position:relative;transition:padding-left .45s cubic-bezier(.2,.8,.3,1);
+}
+.act-row:last-child{border-bottom:1px solid rgba(255,255,255,.11)}
+.act-row::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--lime);
+  transition:width .55s cubic-bezier(.2,.8,.3,1)}
+.act-row:hover::before{width:100%}
+.act-row:hover{padding-left:clamp(6px,.7vw,14px)}
+.act-no{
+  font-size:clamp(34px,3.9vw,66px);font-weight:800;line-height:.86;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1.5px rgba(168,220,75,.5);
+  transition:color .45s,-webkit-text-stroke-color .45s;user-select:none;
+}
+.act-row:hover .act-no{color:rgba(168,220,75,.16);-webkit-text-stroke-color:var(--lime-bright)}
+.act-head{display:flex;align-items:center;gap:clamp(10px,1.1vw,18px);flex-wrap:wrap;margin-bottom:5px}
+.act-name{font-size:clamp(15px,1.42vw,25px);font-weight:700;letter-spacing:-.015em;line-height:1.1;color:var(--white)}
+.act-seal{
+  font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#0A2044;background:linear-gradient(100deg,var(--lime),#B7E356);
+  padding:5px 13px;border-radius:100px;white-space:nowrap;
+  box-shadow:0 6px 18px rgba(140,198,63,.22);animation:sealp 3.4s ease-in-out infinite;
+}
+@keyframes sealp{0%,100%{box-shadow:0 6px 18px rgba(140,198,63,.16)}50%{box-shadow:0 6px 24px rgba(140,198,63,.42)}}
+.seal-line{background:none;color:var(--lime-bright);border:1.4px solid rgba(168,220,75,.55);box-shadow:none;animation:none}
+.act-logo{height:clamp(17px,1.5vw,24px);width:auto;opacity:.95;animation:afloat 4.2s ease-in-out infinite}
+.act-lead{font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted-dim);line-height:1.45;margin-bottom:clamp(8px,.85vw,14px)}
+.act-steps{display:flex;align-items:flex-start;flex-wrap:wrap;gap:clamp(5px,.6vw,10px)}
+.act-steps > span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 118px}
+.act-steps b{font-size:clamp(10.5px,.84vw,14px);font-weight:700;color:var(--lime-bright);letter-spacing:.02em}
+.act-steps em{font-style:normal;font-size:clamp(9.5px,.75vw,12.5px);font-weight:300;color:var(--muted);line-height:1.35}
+.lnk{width:clamp(20px,2vw,40px);height:12px;flex:none;margin-top:5px;position:relative}
+.lnk::before{content:"";position:absolute;left:0;right:6px;top:50%;height:1.5px;transform:translateY(-50%);
+  background:linear-gradient(90deg,rgba(168,220,75,.8) 0 5px,transparent 5px 11px) 0/11px 1.5px repeat-x;
+  animation:lnkflow 1.4s linear infinite}
+@keyframes lnkflow{to{background-position:11px 0}}
+.lnk::after{content:"";position:absolute;right:0;top:50%;width:5px;height:5px;
+  border-top:1.5px solid rgba(168,220,75,.9);border-right:1.5px solid rgba(168,220,75,.9);
+  transform:translateY(-50%) rotate(45deg)}
+.act-side{display:flex;align-items:center;gap:clamp(14px,1.5vw,28px);text-align:right}
+.act-side > div{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.act-side b{font-size:clamp(18px,1.85vw,32px);font-weight:800;line-height:1;letter-spacing:-.035em;
+  background:linear-gradient(135deg,#fff,var(--lime-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.act-side span{font-size:clamp(8.5px,.68vw,11px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim);white-space:nowrap}
+.side-tag{display:block!important;font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--gold);border:1px solid rgba(233,169,60,.45);
+  padding:6px 13px;border-radius:100px;white-space:nowrap}
+.closing-line{
+  margin-top:clamp(14px,1.6vw,26px);padding-left:clamp(14px,1.3vw,22px);
+  border-left:3px solid var(--gold);
+  font-size:clamp(13px,1.15vw,19px);font-weight:400;color:var(--ice);line-height:1.4;
+}
+.closing-line strong{font-weight:700;color:var(--white)}
 
 /* 09 LOJAS + CANAIS */
 .store-card{border-radius:var(--radius);padding:clamp(16px,1.55vw,28px);border:1px solid;display:flex;flex-direction:column;gap:13px}
@@ -541,6 +578,9 @@ strong{font-weight:600;color:var(--white)}
   .g6{grid-template-columns:repeat(2,1fr)}
   .tl{grid-template-columns:repeat(4,1fr);gap:16px}
   .tl-line{display:none}
+  .act-row{grid-template-columns:clamp(46px,5vw,72px) minmax(0,1fr);row-gap:10px}
+  .act-side{grid-column:2;justify-content:flex-start;text-align:left}
+  .act-side > div{align-items:flex-start}
   .close-grid{grid-template-columns:1fr}
 }
 @media (max-width:760px){
@@ -558,6 +598,9 @@ strong{font-weight:600;color:var(--white)}
   .cover-melon{display:none}
   .s-brand img{height:22px}
   .hs em{display:none}
+  .acts-lead{border-left:none;padding-left:0}
+  .lnk{display:none}
+  .act-steps{gap:9px 18px}
   #s5 .rv[style]{grid-template-columns:1fr!important}
   .ring{width:104px;height:104px}
 }
@@ -613,7 +656,7 @@ strong{font-weight:600;color:var(--white)}
       <div><div class="bn-sm" data-count="5">0</div><div class="bn-lab">Lojas no piloto</div></div>
       <div><div class="bn-sm" data-count="4">0</div><div class="bn-lab">Semanas de ativação</div></div>
       <div><div class="bn-sm" data-count="6">0</div><div class="bn-lab">Peças exclusivas</div></div>
-      <div><div class="bn-sm" data-count="2">0</div><div class="bn-lab">Ativações na loja</div></div>
+      <div><div class="bn-sm" data-count="3">0</div><div class="bn-lab">Ativações na loja</div></div>
     </div>
   </div>
 </section>
@@ -999,62 +1042,89 @@ strong{font-weight:600;color:var(--white)}
   </header>
 
   <div class="s-body">
-    <div class="rv" style="margin-bottom:clamp(16px,2vw,28px)">
-      <span class="eyebrow">O que acontece nas 4 semanas</span>
-      <h2>Prova na banca e <span class="lime">time preparado para indicar</span></h2>
-    </div>
-
-    <div class="g2 rv" style="align-items:stretch">
-      <!-- 1 -->
-      <div class="act">
-        <div class="act-h">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/><circle class="a-pulse" cx="12" cy="7" r="1.4"/></svg></span></div>
-          <div><div class="act-n">ATIVAÇÃO 01</div><div class="act-t">Hora do Mais Doce</div></div>
-        </div>
-        <div class="destaque">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/></svg></span>
-          Degustação
-        </div>
-        <p class="sub" style="font-size:clamp(11px,.85vw,14px)"><strong>Dentro do hortifrúti</strong>, encaixada na bancada. Sem ilha extra.</p>
-        <ul>
-          <li><b>Convidar</b> — “Quer provar a escolha do São Luiz?”</li>
-          <li><b>Servir</b> — fatia gelada e padronizada</li>
-          <li><b>Fechar</b> — indicar preço, inteiro e bandeja</li>
-        </ul>
-        <div class="act-foot">
-          <span class="pill pill-lime">40 segundos por cliente</span>
-          <span class="pill">4 sábados · 2 lojas-âncora</span>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="act">
-        <div class="act-h">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="3.2"/><path class="a-float" d="M2.5 20c0-3.2 2.9-5.4 6.5-5.4s6.5 2.2 6.5 5.4"/><path class="a-pulse" d="M17 4.8a3.2 3.2 0 0 1 0 5.6M19.5 20c0-2.3-1-4-2.6-5"/></svg></span></div>
-          <div><div class="act-n">ATIVAÇÃO 02</div><div class="act-t">Time que Escolhe Bem</div></div>
-          <img class="act-logo" src="assets/logo-famosa-mais.png" alt="Famosa+">
-        </div>
-        <p class="sub" style="font-size:clamp(11px,.85vw,14px)">Programa <strong>exclusivo da rede</strong>, com linguagem São Luiz.</p>
-        <ul>
-          <li><b>Conhecer</b> — vídeo de 3 min + prova interna</li>
-          <li><b>Indicar</b> — frase pronta para o cliente</li>
-          <li><b>Cuidar</b> — missão semanal na banca</li>
-          <li><b>Celebrar</b> — ranking entre as 5 lojas</li>
-        </ul>
-        <div class="act-foot">
-          <span class="pill pill-gold">prêmio para a equipe vencedora</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="rv quote-band" style="margin-top:clamp(16px,1.8vw,26px)">
-      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:40" d="M3 17l5.5-5.5 4 4L21 7"/><path class="a-blink" d="M15 7h6v6"/></svg></span></div>
+    <div class="rv acts-head">
       <div>
-        <div class="ql">O que sustenta o resultado</div>
-        <p class="sub" style="font-size:clamp(12px,.92vw,15px)">A prova tira a dúvida. A indicação do time <strong>fecha a compra</strong>.</p>
+        <span class="eyebrow">O que acontece nas 4 semanas</span>
+        <h2>Três frentes, <span class="lime">uma só banca</span></h2>
       </div>
+      <p class="acts-lead">Cada frente resolve uma dúvida do cliente:<br>o que levar, por que confiar e a quem perguntar.</p>
     </div>
+
+    <div class="acts rv">
+
+      <article class="act-row">
+        <div class="act-no">01</div>
+        <div class="act-main">
+          <div class="act-head">
+            <h3 class="act-name">Hora do Mais Doce</h3>
+            <span class="act-seal">Degustação</span>
+          </div>
+          <p class="act-lead">Dentro do hortifrúti, encaixada na bancada. Sem ilha promocional.</p>
+          <div class="act-steps">
+            <span><b>Convidar</b><em>“Quer provar a escolha do São Luiz?”</em></span>
+            <i class="lnk"></i>
+            <span><b>Servir</b><em>fatia gelada e padronizada</em></span>
+            <i class="lnk"></i>
+            <span><b>Fechar</b><em>preço, inteiro e bandeja</em></span>
+          </div>
+        </div>
+        <div class="act-side">
+          <div><b>4</b><span>sábados</span></div>
+          <div><b>2</b><span>lojas-âncora</span></div>
+        </div>
+      </article>
+
+      <article class="act-row">
+        <div class="act-no">02</div>
+        <div class="act-main">
+          <div class="act-head">
+            <h3 class="act-name">Time que Escolhe Bem</h3>
+            <img class="act-logo" src="assets/logo-famosa-mais.png" alt="Famosa+">
+          </div>
+          <p class="act-lead">Programa exclusivo da rede, com linguagem e reconhecimento São Luiz.</p>
+          <div class="act-steps">
+            <span><b>Conhecer</b><em>vídeo de 3 min + prova interna</em></span>
+            <i class="lnk"></i>
+            <span><b>Indicar</b><em>frase pronta para o cliente</em></span>
+            <i class="lnk"></i>
+            <span><b>Cuidar</b><em>missão semanal na banca</em></span>
+            <i class="lnk"></i>
+            <span><b>Celebrar</b><em>ranking entre as 5 lojas</em></span>
+          </div>
+        </div>
+        <div class="act-side">
+          <div><b>5</b><span>lojas no ranking</span></div>
+          <div class="side-tag">prêmio coletivo</div>
+        </div>
+      </article>
+
+      <article class="act-row">
+        <div class="act-no">03</div>
+        <div class="act-main">
+          <div class="act-head">
+            <h3 class="act-name">Peças no Ponto de Venda</h3>
+            <span class="act-seal seal-line">Enxoval exclusivo</span>
+          </div>
+          <p class="act-lead">As seis peças trabalhando juntas, do melão inteiro até a bandeja.</p>
+          <div class="act-steps">
+            <span><b>Sinalizar</b><em>régua e porta-preço no móvel</em></span>
+            <i class="lnk"></i>
+            <span><b>Selar</b><em>tag da curadoria na fruta</em></span>
+            <i class="lnk"></i>
+            <span><b>Orientar</b><em>card ensina a escolher o ponto</em></span>
+            <i class="lnk"></i>
+            <span><b>Seguir</b><em>etiqueta assina a bandeja</em></span>
+          </div>
+        </div>
+        <div class="act-side">
+          <div><b>6</b><span>peças</span></div>
+          <div><b>5</b><span>lojas</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="rv closing-line">A prova tira a dúvida. A indicação do time <strong>fecha a compra</strong>.</p>
   </div>
 
   <div class="s-note">
