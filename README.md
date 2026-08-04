@@ -30,13 +30,16 @@ Apresentação HTML (deck de 12 telas) desenvolvida pela **75 LAB** para o time 
 
 ## Identidade visual
 
-Baseada no guia do **Melão Famosa**: azul-marinho em degradê, verde-limão `#8CC63F`,
-dourado `#E9A93C`, tipografia Poppins e o traço agrícola das linhas de plantio.
+Sistema próprio construído sobre a marca **Melão Famosa**: alternância entre telas
+**tinta** (azul-marinho `#0B2340`) e **papel** (creme `#F3EEE2`), blocos sólidos de canto
+generoso, fotos em moldura de arco, palavra-chave destacada em pílula verde e formas
+orgânicas de fundo. Paleta: verde `#8CC63F`, dourado `#E9A93C`, terracota `#C2562B`.
+Tipografia: **Bricolage Grotesque** (títulos) + **Archivo** (texto).
 
 ## Stack
 
 HTML + CSS + JavaScript puro, arquivo único. Ícones em SVG inline com animações em loop.
-Sem dependências externas além da fonte Poppins (Google Fonts).
+Sem dependências externas além das fontes do Google Fonts.
 
 ---
 

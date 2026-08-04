@@ -14,147 +14,161 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@10..48,75..100,300..800&family=Archivo:ital,wght@0,300..800;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   SISTEMA — Melão Famosa × Super Mercadinhos São Luiz
+   SISTEMA VISUAL — São Luiz × Melão Famosa
+   Blocos sólidos, formas orgânicas, fotos em arco.
    ============================================================ */
 :root{
-  --navy-950:#050F26;
-  --navy-900:#071634;
-  --navy-800:#0C2350;
-  --navy-700:#143576;
-  --navy-600:#1B4CA8;
-  --navy-line:rgba(140,178,255,.20);
+  /* tinta */
+  --navy:#0B2340;
+  --navy-d:#071A31;
+  --navy-lift:#123156;
+  --navy-line:rgba(243,238,226,.16);
+  /* papel */
+  --cream:#F3EEE2;
+  --cream-2:#E8E0CE;
+  --cream-line:rgba(11,35,64,.14);
+  /* marca */
   --lime:#8CC63F;
-  --lime-bright:#A8DC4B;
-  --lime-soft:rgba(140,198,63,.14);
+  --lime-lt:#B7E356;
+  --lime-pale:#DDEFB6;
   --gold:#E9A93C;
-  --gold-soft:rgba(233,169,60,.16);
-  --coral:#F2793D;
-  --white:#FFFFFF;
-  --ice:#E4EDFB;
-  --muted:#9DB2D8;
-  --muted-dim:#6E83AC;
-  --card:rgba(255,255,255,.055);
-  --card-brd:rgba(255,255,255,.12);
-  --radius:20px;
-  --f: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --gold-pale:#F7E3BA;
+  --clay:#C2562B;
+  --clay-pale:#F2D4C6;
+  /* texto */
+  --on-ink:#F3EEE2;
+  --on-ink-dim:#9FB4CE;
+  --on-paper:#0B2340;
+  --on-paper-dim:#5F7085;
+
+  --r-sm:12px; --r:22px; --r-lg:30px; --r-xl:44px;
+  --fd:'Bricolage Grotesque','Archivo',system-ui,sans-serif;
+  --ft:'Archivo',system-ui,-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--f);
-  background:var(--navy-950);
-  color:var(--white);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{font-family:var(--ft);background:var(--navy-d);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
 /* ---------- DECK ---------- */
-.deck{
-  height:100vh;height:100svh;
-  overflow-y:scroll;
-  scroll-snap-type:y mandatory;
-  scrollbar-width:none;
-}
+.deck{height:100vh;height:100svh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
 .deck::-webkit-scrollbar{display:none}
 .slide{
-  position:relative;
-  min-height:100vh;min-height:100svh;
-  scroll-snap-align:start;
-  scroll-snap-stop:always;
+  position:relative;min-height:100vh;min-height:100svh;
+  scroll-snap-align:start;scroll-snap-stop:always;
   display:flex;flex-direction:column;
-  padding:clamp(22px,3.2vw,52px) clamp(24px,5vw,84px) clamp(40px,3.8vw,58px);
+  padding:clamp(22px,3.2vw,52px) clamp(24px,5vw,84px) clamp(38px,3.6vw,56px);
   overflow:hidden;
-  background:
-    radial-gradient(1100px 700px at 88% -8%, rgba(27,76,168,.55), transparent 62%),
-    radial-gradient(900px 620px at -12% 108%, rgba(20,53,118,.5), transparent 60%),
-    linear-gradient(158deg,#071634 0%,#0C2350 46%,#102C63 100%);
-}
-.slide::after{ /* textura de linhas do campo */
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:
-    repeating-linear-gradient(102deg, rgba(160,195,255,.05) 0 1px, transparent 1px 62px),
-    repeating-linear-gradient(78deg, rgba(160,195,255,.035) 0 1px, transparent 1px 96px);
-  mask-image:linear-gradient(to top,rgba(0,0,0,.85),transparent 72%);
-  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.85),transparent 72%);
 }
 .slide > *{position:relative;z-index:2}
 
-/* ---------- CABEÇALHO DO SLIDE ---------- */
+/* ---------- PELES ---------- */
+.sk-ink{background:var(--navy);color:var(--on-ink)}
+.sk-paper{background:var(--cream);color:var(--on-paper)}
+/* mancha orgânica de fundo */
+.sk-ink::before,.sk-paper::before{
+  content:"";position:absolute;z-index:0;border-radius:50%;pointer-events:none;
+  width:min(58vw,780px);aspect-ratio:1;right:-16vw;top:-24vw;
+  animation:drift 22s ease-in-out infinite;
+}
+.sk-ink::before{background:radial-gradient(circle at 40% 40%,rgba(140,198,63,.14),rgba(140,198,63,0) 62%)}
+.sk-paper::before{background:radial-gradient(circle at 40% 40%,rgba(233,169,60,.22),rgba(233,169,60,0) 62%)}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-3%,4%)}}
+.sk-ink::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:0;pointer-events:none;opacity:.5;
+  background:
+    repeating-linear-gradient(101deg,rgba(233,169,60,.10) 0 1px,transparent 1px 54px),
+    repeating-linear-gradient(79deg,rgba(233,169,60,.07) 0 1px,transparent 1px 82px);
+  mask-image:linear-gradient(to top,#000,transparent);-webkit-mask-image:linear-gradient(to top,#000,transparent);
+}
+
+/* ---------- TOPO ---------- */
 .s-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:clamp(12px,1.7vw,26px)}
 .s-brand{display:flex;align-items:center;gap:clamp(12px,1.4vw,20px)}
-.s-brand img{height:clamp(24px,2.4vw,34px);width:auto;opacity:.95}
-.s-brand .sep{width:1px;height:26px;background:rgba(255,255,255,.24)}
+.s-brand img{height:clamp(24px,2.4vw,34px);width:auto}
+.s-brand .sep{width:1px;height:24px;background:currentColor;opacity:.28}
 .s-kicker{
-  font-size:clamp(9px,.72vw,11.5px);font-weight:700;letter-spacing:.22em;
-  color:var(--lime-bright);text-transform:uppercase;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 15px;border-radius:100px;white-space:nowrap;
 }
-.s-kicker .n{color:var(--muted-dim);margin-right:8px}
+.sk-ink .s-kicker{background:rgba(243,238,226,.09);color:var(--lime-lt)}
+.sk-paper .s-kicker{background:var(--lime-pale);color:#41651A}
+.s-kicker .n{opacity:.55;font-weight:800}
 
 /* ---------- TÍTULOS ---------- */
+h1,h2,h3,.act-name,.bn,.bn-sm,.qt,.flow-num,.act-no,.ring-v,.dc-v{font-family:var(--fd)}
+h1{font-size:clamp(34px,5.4vw,76px);font-weight:700;line-height:1.02;letter-spacing:-.032em}
+h2{font-size:clamp(23px,2.85vw,44px);font-weight:700;line-height:1.08;letter-spacing:-.028em;margin-bottom:6px}
+h3{font-size:clamp(15px,1.28vw,20px);font-weight:600;line-height:1.22;letter-spacing:-.015em}
+.sub{font-family:var(--ft);font-size:clamp(12.5px,1vw,16.5px);font-weight:400;line-height:1.5;max-width:74ch}
+.sk-ink .sub{color:var(--on-ink-dim)} .sk-paper .sub{color:var(--on-paper-dim)}
+strong{font-weight:700}
+.sk-ink .lime{color:var(--lime-lt)} .sk-paper .lime{color:#4E7A1E}
+.sk-ink .gold{color:var(--gold)} .sk-paper .gold{color:#A9741C}
+/* palavra destacada em pílula (referência) */
+.mark{display:inline-block;padding:.02em .34em .1em;border-radius:.44em;
+  background:var(--lime);color:var(--navy);animation:markin 5s ease-in-out infinite}
+@keyframes markin{0%,100%{background:var(--lime)}50%{background:var(--lime-lt)}}
+.sk-ink .mark{color:var(--navy)}
+
 .eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--lime-bright);margin-bottom:14px;
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--ft);font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;margin-bottom:13px;padding:6px 14px;border-radius:100px;
 }
-.eyebrow::before{content:"";width:clamp(22px,2.6vw,40px);height:2px;background:var(--lime);border-radius:2px;
-  animation:growline 2.8s ease-in-out infinite;transform-origin:left}
-@keyframes growline{0%,100%{transform:scaleX(.35);opacity:.55}50%{transform:scaleX(1);opacity:1}}
-h1{font-size:clamp(34px,5.6vw,80px);font-weight:800;line-height:1.02;letter-spacing:-.025em}
-h2{font-size:clamp(23px,2.85vw,44px);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:6px}
-h3{font-size:clamp(15px,1.28vw,20px);font-weight:700;line-height:1.24;letter-spacing:-.01em}
-.sub{font-size:clamp(13px,1.02vw,17px);font-weight:300;color:var(--muted);line-height:1.5;max-width:74ch}
-.lime{color:var(--lime-bright)}
-.gold{color:var(--gold)}
-strong{font-weight:600;color:var(--white)}
+.sk-ink .eyebrow{background:rgba(233,169,60,.16);color:var(--gold)}
+.sk-paper .eyebrow{background:var(--gold-pale);color:#8A5D12}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:apulse 2.4s ease-in-out infinite}
 
 .s-body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
 
 /* ---------- RODAPÉ ---------- */
 .s-note{
   margin-top:auto;padding-top:clamp(10px,1.3vw,20px);
-  font-size:clamp(10px,.76vw,12.5px);font-weight:300;color:var(--muted-dim);line-height:1.5;
-  border-top:1px solid rgba(255,255,255,.09);display:flex;gap:10px;align-items:flex-start;
+  font-size:clamp(10px,.76vw,12.5px);font-weight:400;line-height:1.5;
+  display:flex;gap:10px;align-items:flex-start;
 }
-.s-note svg{flex:none;width:14px;height:14px;margin-top:1px;opacity:.7}
+.sk-ink .s-note{color:var(--on-ink-dim);border-top:1px solid var(--navy-line)}
+.sk-paper .s-note{color:var(--on-paper-dim);border-top:1px solid var(--cream-line)}
+.s-note svg{flex:none;width:14px;height:14px;margin-top:1px;opacity:.65}
 
-/* ---------- CARDS ---------- */
-.card{
-  background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);
-  padding:clamp(16px,1.5vw,26px);backdrop-filter:blur(10px);
-  transition:transform .45s cubic-bezier(.2,.8,.3,1),border-color .45s,background .45s;
-  position:relative;overflow:hidden;
-}
-.card:hover{transform:translateY(-5px);border-color:rgba(168,220,75,.42);background:rgba(255,255,255,.085)}
-.card-lite{background:rgba(255,255,255,.96);color:var(--navy-900);border-color:transparent}
-.card-lite h3{color:var(--navy-800)}
-.card-lite p{color:#4A5B7C}
+/* ---------- BLOCOS ---------- */
+.card{border-radius:var(--r-lg);padding:clamp(16px,1.5vw,26px);position:relative;overflow:hidden;
+  transition:transform .45s cubic-bezier(.2,.8,.3,1),background .4s}
+.sk-ink .card{background:var(--navy-lift)}
+.sk-paper .card{background:#fff}
+.card:hover{transform:translateY(-5px)}
+.card-lite{background:var(--lime-pale)!important;color:var(--navy)}
+.card-lite h3,.card-lite p{color:var(--navy)}
 
-/* ---------- ÍCONES ANIMADOS ---------- */
+/* ---------- ÍCONES: MEDALHÃO CIRCULAR ---------- */
 .ico{display:inline-flex;align-items:center;justify-content:center;flex:none}
 .ico svg{width:100%;height:100%;overflow:visible}
 .ico-box{
-  width:clamp(38px,3.5vw,54px);height:clamp(38px,3.5vw,54px);border-radius:14px;
-  background:var(--lime-soft);border:1px solid rgba(168,220,75,.3);
+  width:clamp(40px,3.6vw,56px);height:clamp(40px,3.6vw,56px);border-radius:50%;
   display:flex;align-items:center;justify-content:center;position:relative;flex:none;
+  background:var(--lime);color:var(--navy);
 }
-.ico-box .ico{width:56%;height:56%}
-.ico-box::after{ /* halo em loop */
-  content:"";position:absolute;inset:-1px;border-radius:14px;border:1px solid var(--lime);
-  animation:halo 3s ease-out infinite;
-}
-@keyframes halo{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.28);opacity:0}100%{opacity:0}}
-.ico-box.gold-box{background:var(--gold-soft);border-color:rgba(233,169,60,.32)}
-.ico-box.gold-box::after{border-color:var(--gold)}
-.ico-box.red-box{background:rgba(242,121,61,.14);border-color:rgba(242,121,61,.3)}
-.ico-box.red-box::after{border-color:var(--coral)}
+.ico-box .ico{width:54%;height:54%}
+.ico-box::after{content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:1.5px solid currentColor;opacity:.3;animation:ring 3.2s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.35}70%{transform:scale(1.22);opacity:0}100%{opacity:0}}
+.ico-box.gold-box{background:var(--gold)}
+.ico-box.red-box{background:var(--clay);color:var(--cream)}
+.sk-ink .ico-box{color:var(--navy)}
 
-/* animações reutilizáveis dos traços */
+/* animações */
 .a-draw{stroke-dasharray:120;animation:draw 3.2s ease-in-out infinite}
 @keyframes draw{0%{stroke-dashoffset:120}45%,60%{stroke-dashoffset:0}100%{stroke-dashoffset:-120}}
+.a-tick{stroke-dasharray:24;animation:atick 3.4s ease-out infinite}
+@keyframes atick{0%{stroke-dashoffset:24}28%,100%{stroke-dashoffset:0}}
+.a-pop{animation:apop 3.4s ease-out infinite;transform-origin:center}
+@keyframes apop{0%{transform:scale(.35);opacity:0}16%{transform:scale(1.15);opacity:1}28%,100%{transform:scale(1);opacity:1}}
 .a-pulse{animation:apulse 2.2s ease-in-out infinite;transform-origin:center}
-@keyframes apulse{0%,100%{opacity:.35;transform:scale(.86)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes apulse{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1.05)}}
 .a-float{animation:afloat 3.4s ease-in-out infinite}
 @keyframes afloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}
 .a-spin{animation:aspin 9s linear infinite;transform-origin:center}
@@ -164,83 +178,57 @@ strong{font-weight:600;color:var(--white)}
 .a-slide{animation:aslide 2.6s ease-in-out infinite}
 @keyframes aslide{0%,100%{transform:translateX(-2px)}50%{transform:translateX(3px)}}
 .a-rise{animation:arise 2.8s ease-in-out infinite}
-@keyframes arise{0%,100%{transform:translateY(1.5px) scaleY(.9);opacity:.6}50%{transform:translateY(-1.5px) scaleY(1);opacity:1}}
-.a-tick{stroke-dasharray:24;animation:atick 3.4s ease-out infinite}
-@keyframes atick{0%{stroke-dashoffset:24}28%,100%{stroke-dashoffset:0}}
-.a-pop{animation:apop 3.4s ease-out infinite;transform-origin:center}
-@keyframes apop{0%{transform:scale(.35);opacity:0}16%{transform:scale(1.15);opacity:1}28%,100%{transform:scale(1);opacity:1}}
+@keyframes arise{0%,100%{transform:translateY(1.5px) scaleY(.9);opacity:.65}50%{transform:translateY(-1.5px) scaleY(1);opacity:1}}
 .a-flow{stroke-dasharray:6 7;animation:aflow 1.5s linear infinite}
 @keyframes aflow{to{stroke-dashoffset:-26}}
-
-/* ---------- SETAS / CONEXÕES ---------- */
-.arrow-x{display:flex;align-items:center;justify-content:center;flex:none;width:clamp(22px,3vw,56px)}
-.arrow-x svg{width:100%;height:22px;overflow:visible}
-.connector{
-  position:absolute;left:0;right:0;top:50%;height:2px;
-  background:repeating-linear-gradient(90deg,rgba(168,220,75,.55) 0 8px,transparent 8px 18px);
-  animation:conn 1.4s linear infinite;z-index:0;
-}
 @keyframes conn{to{background-position:18px 0}}
 
-/* bullets conectados */
+/* ---------- SETAS ---------- */
+.arrow-x{display:flex;align-items:center;justify-content:center;flex:none;width:clamp(22px,3vw,56px);color:var(--lime)}
+.sk-paper .arrow-x{color:#6FA02C}
+.arrow-x svg{width:100%;height:22px;overflow:visible;stroke:currentColor}
+
+/* bullets encadeados */
 .chain{display:flex;flex-direction:column;gap:clamp(10px,1.1vw,16px);position:relative}
-.chain::before{
-  content:"";position:absolute;left:clamp(9px,.85vw,13px);top:14px;bottom:14px;width:2px;
-  background:linear-gradient(180deg,var(--lime),rgba(140,198,63,.12));
-}
+.chain::before{content:"";position:absolute;left:clamp(9px,.85vw,13px);top:14px;bottom:14px;width:2px;background:var(--lime);opacity:.4}
 .chain li{list-style:none;display:flex;gap:clamp(12px,1.1vw,18px);align-items:flex-start;position:relative}
-.chain .dot{
-  width:clamp(20px,1.75vw,27px);height:clamp(20px,1.75vw,27px);border-radius:50%;flex:none;
-  background:var(--navy-800);border:2px solid var(--lime);
-  display:flex;align-items:center;justify-content:center;
-  font-size:clamp(9px,.72vw,11.5px);font-weight:700;color:var(--lime-bright);z-index:1;
-}
-.chain li:hover .dot{background:var(--lime);color:var(--navy-900)}
-.chain .tx{font-size:clamp(12px,.95vw,15.5px);line-height:1.5;color:var(--ice);padding-top:2px}
-.chain .tx b{display:block;font-weight:600;color:var(--white);font-size:clamp(12.5px,1.02vw,16.5px);margin-bottom:2px}
+.chain .dot{width:clamp(20px,1.75vw,27px);height:clamp(20px,1.75vw,27px);border-radius:50%;flex:none;
+  background:var(--lime);color:var(--navy);display:flex;align-items:center;justify-content:center;
+  font-size:clamp(9px,.72vw,11.5px);font-weight:800;z-index:1}
+.chain .tx{font-size:clamp(12px,.95vw,15.5px);line-height:1.5;padding-top:2px}
+.chain .tx b{display:block;font-weight:700;font-size:clamp(12.5px,1.02vw,16.5px);margin-bottom:2px}
 
-/* ---------- BIG NUMBERS ---------- */
-.bn{font-size:clamp(38px,5.4vw,84px);font-weight:800;line-height:.92;letter-spacing:-.04em;
-  background:linear-gradient(135deg,#FFFFFF 20%,var(--lime-bright) 95%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.bn-sm{font-size:clamp(26px,3.1vw,48px);font-weight:800;line-height:1;letter-spacing:-.035em;color:var(--lime-bright)}
-.bn-lab{font-size:clamp(9.5px,.74vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px}
-.bn-hint{font-size:clamp(11px,.85vw,13.5px);font-weight:300;color:var(--muted-dim);line-height:1.45;margin-top:6px}
+/* ---------- NÚMEROS ---------- */
+.bn{font-size:clamp(38px,5.2vw,80px);font-weight:700;line-height:.94;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.bn-sm{font-size:clamp(26px,3vw,46px);font-weight:700;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.sk-ink .bn,.sk-ink .bn-sm{color:var(--lime-lt)}
+.sk-paper .bn,.sk-paper .bn-sm{color:#4E7A1E}
+.bn-lab{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-top:8px;opacity:.62}
+.bn-hint{font-size:clamp(10.5px,.8vw,13px);font-weight:400;line-height:1.45;margin-top:6px;opacity:.62}
 
-/* ---------- CTA ---------- */
-.cta{
-  display:inline-flex;align-items:center;gap:14px;
-  background:linear-gradient(100deg,var(--lime) 0%,#6FB02E 100%);
-  color:var(--navy-900);font-weight:700;font-size:clamp(13px,1.02vw,16.5px);
+/* ---------- BOTÕES ---------- */
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--lime);color:var(--navy);
+  font-family:var(--fd);font-weight:700;font-size:clamp(13px,1.02vw,16.5px);
   padding:clamp(13px,1.05vw,18px) clamp(22px,1.9vw,32px);border-radius:100px;
-  border:none;cursor:pointer;text-decoration:none;
-  box-shadow:0 12px 34px rgba(140,198,63,.3);
-  position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;
-}
-.cta:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(140,198,63,.44)}
-.cta::before{
-  content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
-  animation:shine 3.4s ease-in-out infinite;
-}
+  border:none;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;
+  transition:transform .3s,background .3s}
+.cta:hover{transform:translateY(-3px);background:var(--lime-lt)}
+.cta::before{content:"";position:absolute;top:0;left:-70%;width:42%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.6s ease-in-out infinite}
 @keyframes shine{0%{left:-70%}55%,100%{left:130%}}
 .cta .ico{width:19px;height:19px}
-.cta-ghost{
-  display:inline-flex;align-items:center;gap:11px;border:1.5px solid rgba(255,255,255,.28);
-  color:var(--white);font-weight:600;font-size:clamp(12px,.92vw,15px);
-  padding:clamp(12px,.95vw,16px) clamp(20px,1.7vw,28px);border-radius:100px;text-decoration:none;
-  transition:border-color .3s,background .3s;
-}
-.cta-ghost:hover{border-color:var(--lime);background:rgba(140,198,63,.1)}
+.cta-ghost{display:inline-flex;align-items:center;gap:11px;border:1.5px solid currentColor;
+  font-weight:600;font-size:clamp(12px,.92vw,15px);padding:clamp(12px,.95vw,16px) clamp(20px,1.7vw,28px);
+  border-radius:100px;text-decoration:none;color:inherit;opacity:.75;transition:.3s}
+.cta-ghost:hover{opacity:1}
 
-/* ---------- PILLS / TAGS ---------- */
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:clamp(9.5px,.74vw,12px);font-weight:600;letter-spacing:.09em;text-transform:uppercase;
-  padding:7px 15px;border-radius:100px;border:1px solid rgba(255,255,255,.22);color:var(--ice);
-}
-.pill-lime{border-color:rgba(168,220,75,.5);color:var(--lime-bright);background:var(--lime-soft)}
-.pill-gold{border-color:rgba(233,169,60,.5);color:var(--gold);background:var(--gold-soft)}
+/* ---------- CHIPS ---------- */
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:clamp(9px,.7vw,11.5px);font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;padding:7px 15px;border-radius:100px}
+.sk-ink .pill{background:rgba(243,238,226,.1);color:var(--on-ink)}
+.sk-paper .pill{background:var(--cream-2);color:var(--on-paper)}
+.pill-lime{background:var(--lime)!important;color:var(--navy)!important}
+.pill-gold{background:var(--gold-pale)!important;color:#8A5D12!important}
 
 /* ---------- GRIDS ---------- */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.5vw,26px)}
@@ -250,323 +238,300 @@ strong{font-weight:600;color:var(--white)}
 .g6{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(11px,1.15vw,18px)}
 
 /* ---------- NAVEGAÇÃO ---------- */
-.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--gold));z-index:120;width:0;transition:width .25s ease}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--lime);z-index:120;width:0;transition:width .25s}
 .dots{position:fixed;right:clamp(10px,1.1vw,20px);top:50%;transform:translateY(-50%);z-index:110;display:flex;flex-direction:column;gap:9px}
-.dots button{
-  width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;
-  background:rgba(255,255,255,.24);transition:all .3s;
-}
-.dots button:hover{background:rgba(255,255,255,.6);transform:scale(1.3)}
-.dots button.on{background:var(--lime-bright);height:22px;border-radius:5px}
-.hint{
-  position:fixed;right:clamp(30px,3.4vw,52px);bottom:clamp(14px,1.6vw,24px);z-index:110;
-  display:flex;align-items:center;gap:9px;font-size:clamp(9.5px,.72vw,11.5px);
-  letter-spacing:.13em;text-transform:uppercase;color:var(--muted-dim);
-  transition:opacity .5s;
-}
+.dots button{width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:rgba(140,198,63,.35);transition:all .3s}
+.dots button:hover{background:var(--lime);transform:scale(1.3)}
+.dots button.on{background:var(--lime);height:22px;border-radius:5px}
+.hint{position:fixed;right:clamp(30px,3.4vw,52px);bottom:clamp(14px,1.6vw,24px);z-index:110;
+  display:flex;align-items:center;gap:9px;font-size:clamp(9px,.7vw,11.5px);letter-spacing:.13em;
+  text-transform:uppercase;color:var(--on-ink-dim);transition:opacity .5s}
 .hint svg{width:15px;height:15px;animation:bob 1.9s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 
 /* ---------- ENTRADA ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
 .slide.live .rv{opacity:1;transform:none}
 .slide.live .rv:nth-child(1){transition-delay:.05s}
 .slide.live .rv:nth-child(2){transition-delay:.12s}
 .slide.live .rv:nth-child(3){transition-delay:.19s}
 .slide.live .rv:nth-child(4){transition-delay:.26s}
 .slide.live .rv:nth-child(5){transition-delay:.33s}
-.slide.live .rv:nth-child(6){transition-delay:.4s}
 
 /* ============================================================
-   SLIDES ESPECÍFICOS
+   TELAS
    ============================================================ */
-/* 01 CAPA */
+/* 01 CAPA — círculo orgânico sobre a foto */
 #s1{padding:0;justify-content:center}
 .cover-bg{position:absolute;inset:0;z-index:0}
-.cover-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 60%;opacity:.62}
+.cover-bg img{width:100%;height:100%;object-fit:cover;object-position:64% 62%;opacity:.72}
 .cover-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(96deg,#061431 0%,rgba(8,26,62,.95) 38%,rgba(12,40,96,.6) 72%,rgba(16,50,116,.25) 100%)}
+  background:linear-gradient(96deg,#071A31 0%,rgba(9,28,58,.94) 40%,rgba(11,40,86,.55) 74%,rgba(14,50,110,.18) 100%)}
 .cover-in{position:relative;z-index:3;padding:clamp(26px,3.4vw,60px) clamp(26px,5.2vw,88px);width:100%}
 .cover-logos{display:flex;align-items:center;gap:clamp(16px,1.8vw,28px);margin-bottom:clamp(20px,2.6vw,42px)}
 .cover-logos img.sl{height:clamp(38px,4.1vw,62px)}
 .cover-logos img.mf{height:clamp(36px,3.9vw,58px)}
-.cover-logos .x{font-size:clamp(15px,1.5vw,24px);font-weight:200;color:rgba(255,255,255,.4)}
-.cover-tag{font-size:clamp(19px,2.2vw,34px);font-weight:300;color:var(--ice);line-height:1.3;margin:clamp(16px,1.9vw,28px) 0 clamp(20px,2.4vw,34px)}
-.cover-tag b{font-weight:700;color:var(--white)}
+.cover-logos .x{font-size:clamp(15px,1.5vw,24px);font-weight:300;opacity:.45;color:var(--cream)}
+.cover-tag{font-size:clamp(15px,1.35vw,21px);font-weight:400;color:var(--on-ink-dim);line-height:1.5;
+  margin:clamp(16px,1.9vw,26px) 0 0;max-width:52ch}
+.cover-tag b{font-weight:700;color:var(--cream)}
 .cover-bn{display:flex;flex-wrap:wrap;gap:clamp(20px,3.4vw,64px);margin-top:clamp(18px,2.1vw,34px);
-  border-top:1px solid rgba(255,255,255,.16);padding-top:clamp(16px,1.8vw,28px)}
-.cover-bn .bn-sm{background:linear-gradient(135deg,#fff,var(--lime-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.cover-melon{
-  position:absolute;right:clamp(-60px,-3vw,0px);bottom:clamp(-40px,-2vw,0px);
-  width:clamp(180px,26vw,430px);opacity:.2;z-index:1;animation:afloat 7s ease-in-out infinite;
+  border-top:1px solid var(--navy-line);padding-top:clamp(16px,1.8vw,28px)}
+#s1 .cover-seal{
+  position:absolute;right:clamp(20px,4vw,88px);top:50%;transform:translateY(-50%);z-index:4;
+  width:clamp(158px,20vw,286px);height:clamp(158px,20vw,286px);border-radius:50%;
+  background:var(--lime);color:var(--navy);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:6%;animation:sealbob 7s ease-in-out infinite;
 }
+@keyframes sealbob{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-54%)}}
+.cover-seal .cs-t{font-family:var(--fd);font-size:clamp(13px,1.35vw,23px);font-weight:700;line-height:1.14;letter-spacing:-.022em}
+.cover-seal .cs-s{font-size:clamp(7.5px,.6vw,10px);font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-top:10px;opacity:.62;white-space:nowrap}
+.cover-seal svg{width:clamp(20px,1.9vw,31px);height:auto;margin-bottom:9px}
+.cover-melon{display:none}
 
 /* 02 NÃO É / É */
 .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(10px,1.4vw,26px);align-items:stretch}
-.vs-card{border-radius:var(--radius);padding:clamp(18px,1.8vw,32px);border:1px solid;display:flex;flex-direction:column}
-.vs-no{background:rgba(242,121,61,.07);border-color:rgba(242,121,61,.3)}
-.vs-yes{background:rgba(140,198,63,.09);border-color:rgba(168,220,75,.42)}
-.vs-lab{display:flex;align-items:center;gap:11px;font-size:clamp(10px,.8vw,13px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
-.vs-no .vs-lab{color:var(--coral)}
-.vs-yes .vs-lab{color:var(--lime-bright)}
-.vs-h{font-size:clamp(17px,1.65vw,27px);font-weight:700;line-height:1.18;margin-bottom:11px;letter-spacing:-.015em}
-.vs-p{font-size:clamp(12px,.94vw,15.5px);font-weight:300;color:var(--muted);line-height:1.55}
-.vs-arrow{display:flex;align-items:center;justify-content:center;width:clamp(38px,4.4vw,80px)}
-.vs-arrow svg{width:100%;overflow:visible}
+.vs-card{border-radius:var(--r-lg);padding:clamp(18px,1.8vw,32px);display:flex;flex-direction:column}
+.vs-no{background:var(--clay-pale);color:#7A3418}
+.vs-yes{background:var(--navy);color:var(--cream)}
+.vs-lab{display:flex;align-items:center;gap:11px;font-size:clamp(9px,.72vw,12px);font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.vs-no .vs-lab{color:var(--clay)} .vs-yes .vs-lab{color:var(--lime-lt)}
+.vs-h{font-family:var(--fd);font-size:clamp(17px,1.62vw,27px);font-weight:700;line-height:1.14;margin-bottom:11px;letter-spacing:-.02em}
+.vs-p{font-size:clamp(11.5px,.92vw,15px);font-weight:400;line-height:1.55;opacity:.78}
+.vs-yes .lime{color:var(--lime-lt)}
+.vs-arrow{display:flex;align-items:center;justify-content:center;width:clamp(38px,4.4vw,80px);color:var(--lime)}
+.sk-paper .vs-arrow{color:#6FA02C}
+.vs-arrow svg{width:100%;overflow:visible;stroke:currentColor}
+.vs-no .pill{background:rgba(194,86,43,.18)!important;color:#8C3E1D!important}
+.vs-yes .pill{background:rgba(243,238,226,.12)!important;color:var(--cream)!important}
 
-/* 03 FLUXO 3 PASSOS */
-.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0}
-.flow-step{border-radius:var(--radius);padding:clamp(16px,1.6vw,28px);background:var(--card);border:1px solid var(--card-brd);
-  display:flex;flex-direction:column;gap:12px;transition:.4s}
-.flow-step:hover{border-color:rgba(168,220,75,.45);transform:translateY(-5px)}
-.flow-num{font-size:clamp(28px,3vw,48px);font-weight:800;line-height:1;color:rgba(255,255,255,.1);letter-spacing:-.04em}
-.flow-t{font-size:clamp(13px,1.12vw,18px);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--lime-bright)}
-.flow-p{font-size:clamp(11.5px,.9vw,15px);font-weight:300;color:var(--muted);line-height:1.55}
+/* 03 FLUXO */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch}
+.flow-step{border-radius:var(--r-lg);padding:clamp(16px,1.6vw,28px);display:flex;flex-direction:column;gap:12px;transition:.4s}
+.sk-ink .flow-step{background:var(--navy-lift)}
+.sk-paper .flow-step{background:#fff}
+.flow-step:nth-of-type(3){background:var(--lime-pale);color:var(--navy)}
+.flow-step:hover{transform:translateY(-6px)}
+.flow-num{font-size:clamp(28px,3vw,48px);font-weight:700;line-height:1;letter-spacing:-.05em;opacity:.16}
+.flow-t{font-family:var(--fd);font-size:clamp(13px,1.15vw,19px);font-weight:700;letter-spacing:-.01em}
+.sk-ink .flow-t{color:var(--lime-lt)} .sk-paper .flow-t{color:#4E7A1E}
+.flow-step:nth-of-type(3) .flow-t{color:#3F6417}
+.flow-p{font-size:clamp(11.5px,.9vw,15px);font-weight:400;line-height:1.55;opacity:.72}
 
-/* 04 60/30/10 */
+/* 04 HIERARQUIA */
 .bars{display:flex;flex-direction:column;gap:clamp(12px,1.3vw,20px)}
 .bar-row{display:grid;grid-template-columns:clamp(96px,10vw,168px) 1fr;gap:clamp(12px,1.4vw,24px);align-items:center}
 .bar-key{text-align:right}
-.bar-key .p{font-size:clamp(20px,2.2vw,36px);font-weight:800;line-height:1;letter-spacing:-.03em}
-.bar-key .n{font-size:clamp(9.5px,.72vw,12px);font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:5px}
-.bar-track{height:clamp(48px,4.6vw,74px);background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--card-brd)}
-.bar-fill{height:100%;border-radius:13px;display:flex;align-items:center;gap:clamp(10px,1vw,16px);
-  padding:0 clamp(12px,1.2vw,20px);width:0;transition:width 1.3s cubic-bezier(.2,.8,.3,1);position:relative;overflow:hidden}
-.bar-fill::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);
-  transform:translateX(-100%);animation:sweep 3.6s ease-in-out infinite}
-@keyframes sweep{0%{transform:translateX(-100%)}55%,100%{transform:translateX(220%)}}
-.bar-fill .bt{font-size:clamp(11px,.92vw,15px);font-weight:600;line-height:1.3;z-index:1}
-.bar-fill .bt small{display:block;font-weight:300;font-size:clamp(10px,.76vw,12.5px);opacity:.82}
-.f-sl{background:linear-gradient(100deg,#1B4CA8,#2E6BD8);color:#fff}
-.f-cp{background:linear-gradient(100deg,#8CC63F,#B7E356);color:#0A2044}
-.f-fa{background:linear-gradient(100deg,#E9A93C,#F5C46B);color:#0A2044}
+.bar-key .p{font-family:var(--fd);font-size:clamp(20px,2.2vw,36px);font-weight:700;line-height:1;letter-spacing:-.04em}
+.bar-key .n{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:5px;opacity:.6}
+.bar-track{height:clamp(48px,4.6vw,74px);border-radius:100px;overflow:hidden;position:relative}
+.sk-ink .bar-track{background:rgba(243,238,226,.07)} .sk-paper .bar-track{background:var(--cream-2)}
+.bar-fill{height:100%;border-radius:100px;display:flex;align-items:center;gap:clamp(10px,1vw,16px);
+  padding:0 clamp(16px,1.5vw,26px);width:0;transition:width 1.3s cubic-bezier(.2,.8,.3,1);position:relative;overflow:hidden}
+.bar-fill .bt{font-size:clamp(11px,.9vw,14.5px);font-weight:700;line-height:1.3;z-index:1}
+.bar-fill .bt small{display:block;font-weight:400;font-size:clamp(9.5px,.74vw,12px);opacity:.82}
+.f-sl{background:var(--navy);color:var(--cream)}
+.sk-ink .f-sl{background:#1D4A8C}
+.f-cp{background:var(--lime);color:var(--navy)}
+.f-fa{background:var(--gold);color:var(--navy)}
 
-/* 05 ENTRA / NÃO ENTRA */
-.list-ck{display:flex;flex-direction:column;gap:clamp(6px,.62vw,10px)}
-.list-ck li{list-style:none;display:flex;align-items:center;gap:12px;
-  font-size:clamp(11.5px,.9vw,15px);font-weight:400;color:var(--ice);
-  padding:clamp(6px,.58vw,10px) clamp(11px,1vw,16px);border-radius:12px;
-  background:rgba(255,255,255,.04);border:1px solid transparent;transition:.35s}
-.list-ck li:hover{background:rgba(255,255,255,.08);transform:translateX(5px)}
-.list-ck .mk{width:20px;height:20px;flex:none}
-.no-list li:hover{border-color:rgba(242,121,61,.35)}
-.yes-list li:hover{border-color:rgba(168,220,75,.4)}
-.no-list li{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(242,121,61,.5)}
+/* 05 REGRAS + FOTO EM ARCO */
+.shot{position:relative;overflow:hidden;margin:0;border-radius:var(--r-xl) var(--r-xl) var(--r) var(--r)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.shot::before{content:"";display:block;padding-top:56%}
+.shot-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,49,.3) 0%,transparent 34%,transparent 58%,rgba(7,26,49,.95) 100%)}
+.shot figcaption{position:absolute;left:clamp(14px,1.4vw,24px);right:clamp(14px,1.4vw,24px);bottom:clamp(12px,1.2vw,20px);
+  display:flex;align-items:center;gap:11px;flex-wrap:wrap;font-size:clamp(10.5px,.8vw,13px);color:var(--on-ink-dim)}
+.hs{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:9px;z-index:3}
+.hs i{width:clamp(24px,2vw,32px);height:clamp(24px,2vw,32px);border-radius:50%;flex:none;
+  background:var(--lime);color:var(--navy);font-weight:800;font-style:normal;
+  font-size:clamp(10px,.78vw,13px);display:flex;align-items:center;justify-content:center;animation:hsp 2.4s ease-out infinite}
+@keyframes hsp{0%{box-shadow:0 0 0 0 rgba(140,198,63,.6)}70%{box-shadow:0 0 0 16px rgba(140,198,63,0)}100%{box-shadow:0 0 0 0 rgba(140,198,63,0)}}
+.hs em{font-style:normal;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--navy);background:var(--cream);padding:6px 12px;border-radius:100px;white-space:nowrap}
+.hs:nth-of-type(2) i{animation-delay:.8s} .hs:nth-of-type(3) i{animation-delay:1.6s}
+.rule{display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);border-radius:var(--r);
+  padding:clamp(12px,1.15vw,19px) clamp(14px,1.35vw,22px);transition:.4s}
+.sk-ink .rule{background:var(--navy-lift)} .sk-paper .rule{background:#fff}
+.rule:hover{transform:translateX(4px)}
+.rule-max{background:var(--lime)!important;color:var(--navy)!important}
+.rule-max .bn-sm{color:var(--navy)!important}
+.rule > div:last-child{font-size:clamp(11px,.86vw,14px);font-weight:400;line-height:1.4;opacity:.78}
+.rule b{display:block;font-family:var(--fd);font-size:clamp(12px,.96vw,15.5px);font-weight:700;margin-bottom:2px;opacity:1}
+.rule-max > div:last-child{opacity:.86}
+.banned{border-radius:var(--r);padding:clamp(12px,1.15vw,19px) clamp(14px,1.35vw,22px);background:var(--clay-pale);color:#7A3418}
+.banned-h{display:flex;align-items:center;gap:9px;font-size:clamp(9px,.7vw,11.5px);font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:11px}
+.banned-g{display:flex;flex-wrap:wrap;gap:7px}
+.banned-g span{font-size:clamp(9.5px,.76vw,12.5px);font-weight:600;padding:5px 12px;border-radius:100px;
+  background:rgba(194,86,43,.14);text-decoration:line-through;text-decoration-color:rgba(194,86,43,.55)}
 
 /* 06 JORNADA */
 .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,16px);position:relative}
-.jn{border-radius:16px;padding:clamp(13px,1.3vw,22px);background:var(--card);border:1px solid var(--card-brd);
-  display:flex;flex-direction:column;gap:10px;align-items:flex-start;transition:.4s;position:relative;z-index:2}
-.jn:hover{transform:translateY(-6px);border-color:rgba(168,220,75,.45);background:rgba(255,255,255,.09)}
-.jn .st{font-size:clamp(9px,.7vw,11px);font-weight:700;letter-spacing:.16em;color:var(--muted-dim)}
-.jn .tt{font-size:clamp(12px,1.02vw,17px);font-weight:700;color:var(--lime-bright);letter-spacing:.03em}
-.jn .dd{font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted);line-height:1.45}
-.jline{position:absolute;left:6%;right:6%;top:clamp(28px,2.6vw,44px);height:2px;z-index:0;
-  background:repeating-linear-gradient(90deg,rgba(168,220,75,.5) 0 9px,transparent 9px 20px);
-  animation:conn 1.5s linear infinite}
-.quote-band{
-  margin-top:clamp(14px,1.5vw,24px);border-radius:16px;padding:clamp(12px,1.15vw,20px) clamp(16px,1.6vw,26px);
-  background:linear-gradient(100deg,rgba(140,198,63,.14),rgba(27,76,168,.14));
-  border:1px solid rgba(168,220,75,.3);display:flex;align-items:center;gap:clamp(13px,1.4vw,22px);
-}
-.quote-band .qt{font-size:clamp(14px,1.35vw,23px);font-weight:600;font-style:italic;line-height:1.3;letter-spacing:-.01em}
-.quote-band .ql{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime-bright);margin-bottom:5px}
+.jn{border-radius:var(--r-lg);padding:clamp(14px,1.35vw,23px);display:flex;flex-direction:column;gap:10px;
+  align-items:flex-start;transition:.4s;position:relative;z-index:2}
+.sk-ink .jn{background:var(--navy-lift)} .sk-paper .jn{background:#fff}
+.jn:nth-of-type(3){background:var(--lime-pale);color:var(--navy)}
+.jn:hover{transform:translateY(-7px)}
+.jn .st{font-size:clamp(9px,.7vw,11px);font-weight:800;letter-spacing:.16em;opacity:.45}
+.jn .tt{font-family:var(--fd);font-size:clamp(12px,1.05vw,17px);font-weight:700;letter-spacing:-.01em}
+.sk-ink .jn .tt{color:var(--lime-lt)} .sk-paper .jn .tt{color:#4E7A1E}
+.jn:nth-of-type(3) .tt{color:#3F6417}
+.jn .dd{font-size:clamp(10.5px,.82vw,13.5px);font-weight:400;line-height:1.45;opacity:.7}
+.jline{position:absolute;left:6%;right:6%;top:clamp(30px,2.8vw,48px);height:2px;z-index:0;
+  background:repeating-linear-gradient(90deg,var(--lime) 0 9px,transparent 9px 20px);animation:conn 1.5s linear infinite}
+.quote-band{margin-top:clamp(14px,1.5vw,24px);border-radius:var(--r-lg);
+  padding:clamp(14px,1.3vw,22px) clamp(18px,1.7vw,28px);display:flex;align-items:center;gap:clamp(13px,1.4vw,22px);
+  background:var(--lime-pale);color:var(--navy)}
+.sk-ink .quote-band{background:var(--navy-lift);color:var(--cream)}
+.quote-band .qt{font-size:clamp(14px,1.35vw,23px);font-weight:600;line-height:1.25;letter-spacing:-.02em}
+.quote-band .ql{font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.17em;text-transform:uppercase;margin-bottom:5px;opacity:.6}
+.quote-band .sub{opacity:.72}
 
 /* 07 PEÇAS */
-.piece{border-radius:16px;padding:clamp(13px,1.3vw,22px);background:var(--card);border:1px solid var(--card-brd);
-  display:flex;gap:clamp(11px,1.1vw,17px);align-items:flex-start;transition:.4s}
-.piece:hover{transform:translateY(-5px);border-color:rgba(168,220,75,.45)}
-.piece .pn{font-size:clamp(12.5px,1.05vw,17px);font-weight:700;letter-spacing:.03em;margin-bottom:4px}
-.piece .pd{font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted);line-height:1.45}
-.piece .pm{display:inline-block;margin-top:7px;font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.11em;
-  color:var(--gold);background:var(--gold-soft);border-radius:100px;padding:4px 10px}
+.piece{border-radius:var(--r-lg);padding:clamp(14px,1.35vw,23px);display:flex;gap:clamp(11px,1.1vw,17px);
+  align-items:flex-start;transition:.4s}
+.sk-ink .piece{background:var(--navy-lift)} .sk-paper .piece{background:#fff}
+.piece:hover{transform:translateY(-6px)}
+.piece .pn{font-family:var(--fd);font-size:clamp(12.5px,1.05vw,17px);font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.piece .pd{font-size:clamp(10.5px,.82vw,13.5px);font-weight:400;line-height:1.45;opacity:.68}
+.piece .pm{display:inline-block;margin-top:8px;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.1em;
+  background:var(--gold);color:var(--navy);border-radius:100px;padding:4px 11px}
+.pv{width:clamp(74px,6.6vw,104px);flex:none;border-radius:var(--r);padding:7px;transition:.4s}
+.sk-ink .pv{background:rgba(243,238,226,.07)} .sk-paper .pv{background:var(--cream)}
+.piece:hover .pv{background:var(--lime-pale)}
+.pv svg{width:100%;display:block;overflow:visible}
 
-/* 08 ATIVAÇÕES — layout editorial */
-.acts-head{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(20px,3vw,60px);
-  flex-wrap:wrap;margin-bottom:clamp(14px,1.7vw,26px)}
-.acts-lead{font-size:clamp(11.5px,.9vw,15px);font-weight:300;color:var(--muted);line-height:1.5;
-  padding-left:clamp(14px,1.3vw,22px);border-left:2px solid var(--gold);max-width:42ch}
+/* 08 ATIVAÇÕES — bandas editoriais */
+.acts-head{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(20px,3vw,60px);flex-wrap:wrap;margin-bottom:clamp(12px,1.5vw,24px)}
+.acts-lead{font-size:clamp(11.5px,.9vw,15px);font-weight:400;line-height:1.5;padding-left:clamp(14px,1.3vw,22px);
+  border-left:3px solid var(--gold);max-width:42ch;opacity:.72}
 .acts{display:flex;flex-direction:column}
-.act-row{
-  display:grid;grid-template-columns:clamp(56px,5.4vw,96px) minmax(0,1fr) auto;
-  align-items:center;gap:clamp(16px,1.9vw,36px);
-  padding:clamp(13px,1.35vw,24px) 0;border-top:1px solid rgba(255,255,255,.11);
-  position:relative;transition:padding-left .45s cubic-bezier(.2,.8,.3,1);
-}
-.act-row:last-child{border-bottom:1px solid rgba(255,255,255,.11)}
-.act-row::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--lime);
-  transition:width .55s cubic-bezier(.2,.8,.3,1)}
-.act-row:hover::before{width:100%}
-.act-row:hover{padding-left:clamp(6px,.7vw,14px)}
-.act-no{
-  font-size:clamp(34px,3.9vw,66px);font-weight:800;line-height:.86;letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1.5px rgba(168,220,75,.5);
-  transition:color .45s,-webkit-text-stroke-color .45s;user-select:none;
-}
-.act-row:hover .act-no{color:rgba(168,220,75,.16);-webkit-text-stroke-color:var(--lime-bright)}
+.act-row{display:grid;grid-template-columns:clamp(56px,5.4vw,96px) minmax(0,1fr) auto;align-items:center;
+  gap:clamp(16px,1.9vw,36px);padding:clamp(13px,1.35vw,24px) clamp(10px,1vw,18px);
+  border-radius:var(--r-lg);position:relative;transition:background .4s,transform .4s}
+.act-row + .act-row{margin-top:clamp(5px,.5vw,9px)}
+.sk-paper .act-row:hover{background:#fff;transform:translateX(4px)}
+.sk-ink .act-row:hover{background:var(--navy-lift);transform:translateX(4px)}
+.act-row::after{content:"";position:absolute;left:clamp(10px,1vw,18px);right:clamp(10px,1vw,18px);bottom:0;height:1px}
+.sk-paper .act-row::after{background:var(--cream-line)}
+.sk-ink .act-row::after{background:var(--navy-line)}
+.act-row:last-child::after{display:none}
+.act-no{font-size:clamp(34px,3.9vw,66px);font-weight:800;line-height:.86;letter-spacing:-.055em;
+  color:transparent;-webkit-text-stroke:1.6px var(--lime);transition:color .45s}
+.act-row:hover .act-no{color:var(--lime)}
 .act-head{display:flex;align-items:center;gap:clamp(10px,1.1vw,18px);flex-wrap:wrap;margin-bottom:5px}
-.act-name{font-size:clamp(15px,1.42vw,25px);font-weight:700;letter-spacing:-.015em;line-height:1.1;color:var(--white)}
-.act-seal{
-  font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  color:#0A2044;background:linear-gradient(100deg,var(--lime),#B7E356);
-  padding:5px 13px;border-radius:100px;white-space:nowrap;
-  box-shadow:0 6px 18px rgba(140,198,63,.22);animation:sealp 3.4s ease-in-out infinite;
-}
-@keyframes sealp{0%,100%{box-shadow:0 6px 18px rgba(140,198,63,.16)}50%{box-shadow:0 6px 24px rgba(140,198,63,.42)}}
-.seal-line{background:none;color:var(--lime-bright);border:1.4px solid rgba(168,220,75,.55);box-shadow:none;animation:none}
-.act-logo{height:clamp(17px,1.5vw,24px);width:auto;opacity:.95;animation:afloat 4.2s ease-in-out infinite}
-.act-lead{font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted-dim);line-height:1.45;margin-bottom:clamp(8px,.85vw,14px)}
+.act-name{font-size:clamp(15px,1.42vw,25px);font-weight:700;letter-spacing:-.022em;line-height:1.1}
+.act-seal{font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--lime);color:var(--navy);padding:6px 14px;border-radius:100px;white-space:nowrap}
+.seal-line{background:none;border:1.5px solid var(--lime)}
+.sk-paper .seal-line{color:#4E7A1E} .sk-ink .seal-line{color:var(--lime-lt)}
+.act-logo{height:clamp(17px,1.5vw,24px);width:auto;animation:afloat 4.2s ease-in-out infinite}
+.act-lead{font-size:clamp(10.5px,.82vw,13.5px);font-weight:400;line-height:1.45;margin-bottom:clamp(8px,.85vw,14px);opacity:.62}
 .act-steps{display:flex;align-items:flex-start;flex-wrap:wrap;gap:clamp(5px,.6vw,10px)}
 .act-steps > span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 118px}
-.act-steps b{font-size:clamp(10.5px,.84vw,14px);font-weight:700;color:var(--lime-bright);letter-spacing:.02em}
-.act-steps em{font-style:normal;font-size:clamp(9.5px,.75vw,12.5px);font-weight:300;color:var(--muted);line-height:1.35}
-.lnk{width:clamp(20px,2vw,40px);height:12px;flex:none;margin-top:5px;position:relative}
-.lnk::before{content:"";position:absolute;left:0;right:6px;top:50%;height:1.5px;transform:translateY(-50%);
-  background:linear-gradient(90deg,rgba(168,220,75,.8) 0 5px,transparent 5px 11px) 0/11px 1.5px repeat-x;
-  animation:lnkflow 1.4s linear infinite}
+.act-steps b{font-family:var(--fd);font-size:clamp(10.5px,.84vw,14px);font-weight:700}
+.sk-paper .act-steps b{color:#4E7A1E} .sk-ink .act-steps b{color:var(--lime-lt)}
+.act-steps em{font-style:normal;font-size:clamp(9.5px,.75vw,12.5px);font-weight:400;line-height:1.35;opacity:.66}
+.lnk{width:clamp(20px,2vw,40px);height:12px;flex:none;margin-top:5px;position:relative;color:var(--lime)}
+.lnk::before{content:"";position:absolute;left:0;right:6px;top:50%;height:1.6px;transform:translateY(-50%);
+  background:linear-gradient(90deg,currentColor 0 5px,transparent 5px 11px) 0/11px 1.6px repeat-x;animation:lnkflow 1.4s linear infinite}
 @keyframes lnkflow{to{background-position:11px 0}}
 .lnk::after{content:"";position:absolute;right:0;top:50%;width:5px;height:5px;
-  border-top:1.5px solid rgba(168,220,75,.9);border-right:1.5px solid rgba(168,220,75,.9);
-  transform:translateY(-50%) rotate(45deg)}
+  border-top:1.6px solid currentColor;border-right:1.6px solid currentColor;transform:translateY(-50%) rotate(45deg)}
 .act-side{display:flex;align-items:center;gap:clamp(14px,1.5vw,28px);text-align:right}
 .act-side > div{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
-.act-side b{font-size:clamp(18px,1.85vw,32px);font-weight:800;line-height:1;letter-spacing:-.035em;
-  background:linear-gradient(135deg,#fff,var(--lime-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.act-side span{font-size:clamp(8.5px,.68vw,11px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim);white-space:nowrap}
-.side-tag{display:block!important;font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--gold);border:1px solid rgba(233,169,60,.45);
-  padding:6px 13px;border-radius:100px;white-space:nowrap}
-.closing-line{
-  margin-top:clamp(14px,1.6vw,26px);padding-left:clamp(14px,1.3vw,22px);
-  border-left:3px solid var(--gold);
-  font-size:clamp(13px,1.15vw,19px);font-weight:400;color:var(--ice);line-height:1.4;
-}
-.closing-line strong{font-weight:700;color:var(--white)}
+.act-side b{font-family:var(--fd);font-size:clamp(18px,1.85vw,32px);font-weight:700;line-height:1;letter-spacing:-.045em}
+.sk-paper .act-side b{color:#4E7A1E} .sk-ink .act-side b{color:var(--lime-lt)}
+.act-side span{font-size:clamp(8.5px,.66vw,11px);font-weight:700;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;opacity:.5}
+.side-tag{display:block!important;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--gold);color:var(--navy);padding:7px 14px;border-radius:100px;white-space:nowrap}
+.closing-line{margin-top:clamp(12px,1.4vw,22px);padding-left:clamp(14px,1.3vw,22px);border-left:4px solid var(--gold);
+  font-family:var(--fd);font-size:clamp(13px,1.15vw,19px);font-weight:500;line-height:1.4}
+.destaque{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;font-size:clamp(11px,.92vw,15px);
+  font-weight:700;background:var(--lime);color:var(--navy);padding:8px 16px;border-radius:100px}
+.destaque .ico{width:17px;height:17px}
+.destaque-alt{background:none;border:1.5px solid var(--lime);color:var(--lime)}
 
 /* 09 LOJAS + CANAIS */
-.store-card{border-radius:var(--radius);padding:clamp(16px,1.55vw,28px);border:1px solid;display:flex;flex-direction:column;gap:13px}
-.anchor{background:linear-gradient(150deg,rgba(140,198,63,.15),rgba(140,198,63,.04));border-color:rgba(168,220,75,.42)}
-.ext{background:var(--card);border-color:var(--card-brd)}
-.store-tag{display:flex;align-items:center;gap:10px;font-size:clamp(9.5px,.72vw,12px);font-weight:700;letter-spacing:.19em;text-transform:uppercase}
+.store-card{border-radius:var(--r-lg);padding:clamp(16px,1.55vw,28px);display:flex;flex-direction:column;gap:13px}
+.anchor{background:var(--lime);color:var(--navy)}
+.sk-ink .ext{background:var(--navy-lift)} .sk-paper .ext{background:#fff}
+.store-tag{display:flex;align-items:center;gap:10px;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.anchor .store-tag{color:#3F6417}
+.ext .store-tag{opacity:.55}
+.anchor .sub{color:rgba(11,35,64,.75)}
 .store-names{display:flex;flex-wrap:wrap;gap:9px}
-.store-names span{font-size:clamp(12px,1vw,16.5px);font-weight:600;padding:8px 16px;border-radius:100px;
-  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16)}
-.chan{display:flex;gap:11px;align-items:flex-start;padding:clamp(11px,1.05vw,17px);border-radius:14px;
-  background:rgba(255,255,255,.04);border:1px solid var(--card-brd);transition:.35s}
-.chan:hover{background:rgba(255,255,255,.08);border-color:rgba(168,220,75,.4)}
-.chan .ct{font-size:clamp(11px,.92vw,15px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:3px}
-.chan .cd{font-size:clamp(10.5px,.8vw,13px);font-weight:300;color:var(--muted);line-height:1.4}
+.store-names span{font-family:var(--fd);font-size:clamp(12px,1vw,16.5px);font-weight:700;padding:8px 18px;
+  border-radius:100px;background:var(--navy);color:var(--cream)}
+.anchor .pill{background:rgba(11,35,64,.12)!important;color:var(--navy)!important}
+.chan{display:flex;gap:11px;align-items:flex-start;padding:clamp(12px,1.15vw,19px);border-radius:var(--r);transition:.35s}
+.sk-ink .chan{background:var(--navy-lift)} .sk-paper .chan{background:#fff}
+.chan:hover{transform:translateY(-4px)}
+.chan .ct{font-family:var(--fd);font-size:clamp(11.5px,.95vw,15.5px);font-weight:700;letter-spacing:.02em;margin-bottom:3px}
+.chan .cd{font-size:clamp(10.5px,.8vw,13px);font-weight:400;line-height:1.4;opacity:.65}
 
 /* 10 MÉTRICAS */
-.kpi{border-radius:var(--radius);padding:clamp(16px,1.6vw,30px);background:var(--card);border:1px solid var(--card-brd);
-  display:flex;flex-direction:column;gap:9px;transition:.4s;position:relative;overflow:hidden}
-.kpi:hover{transform:translateY(-6px);border-color:rgba(168,220,75,.45)}
-.kpi .kh{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.kpi .kl{font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.kpi{border-radius:var(--r-lg);padding:clamp(16px,1.6vw,30px);display:flex;flex-direction:column;gap:9px;
+  align-items:center;text-align:center;transition:.4s}
+.sk-ink .kpi{background:var(--navy-lift)} .sk-paper .kpi{background:#fff}
+.kpi:hover{transform:translateY(-7px)}
+.kpi:nth-of-type(2){background:var(--lime-pale);color:var(--navy)}
+.ring{position:relative;width:clamp(96px,9vw,142px);height:clamp(96px,9vw,142px);margin-bottom:clamp(8px,.9vw,14px)}
+.ring svg{width:100%;height:100%;overflow:visible}
+.ring-t{opacity:.13}
+.ring-f{transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.3,1)}
+.sk-ink .ring-f[stroke="#6FA02C"]{stroke:#A8DC4B}
+.sk-ink .ring-f[stroke="#D9932A"]{stroke:#E9A93C}
+.sk-ink .ring-f[stroke="#2F6BD4"]{stroke:#5C93F0}
+.ring-v{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(19px,1.85vw,30px);font-weight:700;letter-spacing:-.04em}
+.ring-l{font-size:clamp(9px,.72vw,11.5px);font-weight:800;letter-spacing:.19em;text-transform:uppercase}
+.ring-h{font-size:clamp(10px,.78vw,13px);font-weight:400;line-height:1.4;margin-top:6px;opacity:.6}
+.extra{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:clamp(16px,1.8vw,28px);padding-top:clamp(14px,1.5vw,22px)}
+.sk-ink .extra{border-top:1px solid var(--navy-line)} .sk-paper .extra{border-top:1px solid var(--cream-line)}
+.extra-l{font-size:clamp(9px,.72vw,11.5px);font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-right:6px}
+.sk-paper .extra-l{color:#4E7A1E} .sk-ink .extra-l{color:var(--lime-lt)}
+.extra > span:not(.extra-l){font-size:clamp(10px,.8vw,13px);font-weight:500;padding:7px 14px;border-radius:100px;opacity:.8}
+.sk-ink .extra > span:not(.extra-l){background:rgba(243,238,226,.08)} .sk-paper .extra > span:not(.extra-l){background:#fff}
 
 /* 12 CRONOGRAMA */
 .tl{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(6px,.7vw,12px);position:relative}
 .tl-c{display:flex;flex-direction:column;gap:9px;align-items:center;text-align:center;position:relative;z-index:2}
-.tl-w{font-size:clamp(10px,.8vw,13px);font-weight:800;letter-spacing:.06em;color:var(--muted-dim)}
-.tl-node{width:clamp(13px,1.15vw,18px);height:clamp(13px,1.15vw,18px);border-radius:50%;background:var(--navy-800);
-  border:2.5px solid var(--lime);position:relative}
+.tl-w{font-family:var(--fd);font-size:clamp(10px,.82vw,13.5px);font-weight:700;letter-spacing:.03em;opacity:.45}
+.tl-node{width:clamp(13px,1.15vw,18px);height:clamp(13px,1.15vw,18px);border-radius:50%;
+  background:var(--navy);border:2.5px solid var(--lime)}
 .tl-node.hot{background:var(--lime);animation:nodepulse 2.2s ease-in-out infinite}
 @keyframes nodepulse{0%,100%{box-shadow:0 0 0 0 rgba(140,198,63,.5)}70%{box-shadow:0 0 0 11px rgba(140,198,63,0)}}
-.tl-lab{font-size:clamp(9.5px,.76vw,12.5px);font-weight:400;color:var(--ice);line-height:1.35}
+.tl-lab{font-size:clamp(9.5px,.76vw,12.5px);font-weight:400;line-height:1.35;opacity:.78}
 .tl-line{position:absolute;left:6%;right:6%;top:clamp(26px,2.1vw,33px);height:2px;z-index:0;
-  background:repeating-linear-gradient(90deg,rgba(168,220,75,.5) 0 9px,transparent 9px 20px);animation:conn 1.5s linear infinite}
+  background:repeating-linear-gradient(90deg,var(--lime) 0 9px,transparent 9px 20px);animation:conn 1.5s linear infinite}
 .gates{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.1vw,18px)}
-.gate{display:flex;gap:11px;align-items:center;padding:clamp(11px,1.05vw,17px);border-radius:14px;
-  background:var(--gold-soft);border:1px solid rgba(233,169,60,.32)}
-.gate .gt{font-size:clamp(10.5px,.84vw,13.5px);font-weight:600;line-height:1.35}
-.gate .gn{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.16em;color:var(--gold);margin-bottom:2px}
+.gate{display:flex;gap:11px;align-items:center;padding:clamp(12px,1.15vw,19px);border-radius:var(--r);
+  background:var(--gold);color:var(--navy)}
+.gate .gt{font-family:var(--fd);font-size:clamp(10.5px,.86vw,14px);font-weight:700;line-height:1.3}
+.gate .gn{font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.15em;margin-bottom:2px;opacity:.65}
+.gate .ico-box{background:rgba(11,35,64,.14);color:var(--navy)}
 .gov{display:flex;flex-direction:column;gap:9px}
-.gov li{list-style:none;font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted);
-  display:flex;gap:9px;align-items:flex-start;line-height:1.4}
-.gov li::before{content:"";width:14px;height:1.5px;background:var(--lime);flex:none;margin-top:8px}
+.gov li{list-style:none;font-size:clamp(10.5px,.82vw,13.5px);font-weight:400;display:flex;gap:10px;
+  align-items:flex-start;line-height:1.4;opacity:.72}
+.gov li::before{content:"";width:14px;height:2px;background:var(--lime);flex:none;margin-top:8px;border-radius:2px}
 
 /* 13 FECHO */
-#s13 .s-body{justify-content:center}
 .close-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,3.2vw,60px);align-items:center}
 .next-list{display:flex;flex-direction:column;gap:clamp(7px,.72vw,11px)}
-.next-list li{list-style:none;display:flex;gap:13px;align-items:center;
-  padding:clamp(9px,.85vw,14px) clamp(13px,1.2vw,20px);border-radius:14px;
-  background:rgba(255,255,255,.05);border:1px solid var(--card-brd);
-  font-size:clamp(11.5px,.92vw,15.5px);font-weight:400;color:var(--ice);transition:.35s}
-.next-list li:hover{background:rgba(140,198,63,.12);border-color:rgba(168,220,75,.45);transform:translateX(6px)}
-.next-list .nn{width:clamp(22px,1.9vw,29px);height:clamp(22px,1.9vw,29px);border-radius:9px;flex:none;
-  background:var(--lime);color:var(--navy-900);font-weight:800;font-size:clamp(10px,.78vw,13px);
+.next-list li{list-style:none;display:flex;gap:13px;align-items:center;padding:clamp(9px,.85vw,14px) clamp(14px,1.25vw,21px);
+  border-radius:100px;font-size:clamp(11.5px,.92vw,15.5px);font-weight:500;transition:.35s}
+.sk-ink .next-list li{background:rgba(243,238,226,.07)} .sk-paper .next-list li{background:#fff}
+.next-list li:hover{background:var(--lime);color:var(--navy);transform:translateX(6px)}
+.next-list .nn{width:clamp(22px,1.9vw,29px);height:clamp(22px,1.9vw,29px);border-radius:50%;flex:none;
+  background:var(--lime);color:var(--navy);font-weight:800;font-size:clamp(10px,.78vw,13px);
   display:flex;align-items:center;justify-content:center}
+.next-list li:hover .nn{background:var(--navy);color:var(--lime)}
 .close-bn{display:flex;gap:clamp(18px,2.4vw,42px);flex-wrap:wrap;margin-top:clamp(16px,1.7vw,26px);
-  border-top:1px solid rgba(255,255,255,.16);padding-top:clamp(14px,1.5vw,22px)}
-
-
-/* ---------- 07 · PREVIEW DAS PEÇAS ---------- */
-.pv{width:clamp(74px,6.6vw,104px);flex:none;border-radius:14px;background:rgba(255,255,255,.04);
-  border:1px solid var(--card-brd);padding:6px;transition:.4s}
-.piece:hover .pv{border-color:rgba(168,220,75,.45);background:rgba(140,198,63,.09)}
-.pv svg{width:100%;display:block;overflow:visible}
-.pv-sh{transition:.4s}
-
-/* ---------- 05 · FOTO COM HOTSPOTS ---------- */
-.shot{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-brd);margin:0}
-.shot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.shot::before{content:"";display:block;padding-top:56%}
-.shot-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,49,.28) 0%,transparent 34%,transparent 62%,rgba(6,20,49,.94) 100%)}
-.shot figcaption{position:absolute;left:clamp(12px,1.2vw,20px);right:clamp(12px,1.2vw,20px);bottom:clamp(11px,1.1vw,18px);
-  display:flex;align-items:center;gap:11px;flex-wrap:wrap;
-  font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--ice)}
-.hs{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:9px;z-index:3}
-.hs i{
-  width:clamp(22px,1.85vw,29px);height:clamp(22px,1.85vw,29px);border-radius:50%;flex:none;
-  background:var(--lime);color:#0A2044;font-weight:800;font-style:normal;
-  font-size:clamp(10px,.78vw,13px);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 3px rgba(140,198,63,.28);animation:hsp 2.4s ease-out infinite;
-}
-@keyframes hsp{0%{box-shadow:0 0 0 0 rgba(140,198,63,.55)}70%{box-shadow:0 0 0 15px rgba(140,198,63,0)}100%{box-shadow:0 0 0 0 rgba(140,198,63,0)}}
-.hs em{
-  font-style:normal;font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--white);background:rgba(7,22,52,.82);border:1px solid rgba(168,220,75,.45);
-  padding:5px 11px;border-radius:100px;backdrop-filter:blur(6px);white-space:nowrap;
-}
-.hs:nth-of-type(2) i{animation-delay:.8s}
-.hs:nth-of-type(3) i{animation-delay:1.6s}
-
-/* ---------- 05 · REGRAS ---------- */
-.rule{display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);border-radius:16px;
-  padding:clamp(12px,1.15vw,19px) clamp(13px,1.25vw,20px);
-  background:var(--card);border:1px solid var(--card-brd);transition:.4s}
-.rule:hover{border-color:rgba(168,220,75,.45);transform:translateX(4px)}
-.rule-max{background:linear-gradient(100deg,rgba(140,198,63,.16),rgba(27,76,168,.1));border-color:rgba(168,220,75,.38)}
-.rule > div:last-child{font-size:clamp(11px,.86vw,14px);font-weight:300;color:var(--muted);line-height:1.4}
-.rule b{display:block;font-size:clamp(11.5px,.92vw,15px);font-weight:700;color:var(--white);margin-bottom:2px}
-.rule-max .bn-sm{flex:none}
-.banned{border-radius:16px;padding:clamp(12px,1.15vw,19px) clamp(13px,1.25vw,20px);
-  background:rgba(242,121,61,.06);border:1px solid rgba(242,121,61,.26)}
-.banned-h{display:flex;align-items:center;gap:9px;font-size:clamp(9.5px,.74vw,12px);font-weight:700;
-  letter-spacing:.19em;text-transform:uppercase;color:var(--coral);margin-bottom:11px}
-.banned-g{display:flex;flex-wrap:wrap;gap:7px}
-.banned-g span{font-size:clamp(9.5px,.76vw,12.5px);font-weight:500;color:var(--muted);
-  padding:5px 11px;border-radius:100px;background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);text-decoration:line-through;text-decoration-color:rgba(242,121,61,.6)}
-
-/* ---------- 10 · ANÉIS ---------- */
-.ring-card{align-items:center;text-align:center;gap:0}
-.ring{position:relative;width:clamp(96px,9vw,142px);height:clamp(96px,9vw,142px);margin-bottom:clamp(8px,.9vw,14px)}
-.ring svg{width:100%;height:100%;overflow:visible}
-.ring-f{transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.3,1)}
-.ring-v{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:clamp(19px,1.85vw,30px);font-weight:800;letter-spacing:-.035em}
-.ring-l{font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
-.ring-h{font-size:clamp(10px,.78vw,13px);font-weight:300;color:var(--muted-dim);line-height:1.4;margin-top:6px}
-.extra{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:clamp(16px,1.8vw,28px);
-  padding-top:clamp(14px,1.5vw,22px);border-top:1px solid rgba(255,255,255,.09)}
-.extra-l{font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--lime-bright);margin-right:6px}
-.extra > span:not(.extra-l){font-size:clamp(10px,.8vw,13px);font-weight:400;color:var(--muted);
-  padding:6px 13px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--card-brd);transition:.3s}
-.extra > span:not(.extra-l):hover{border-color:rgba(168,220,75,.4);color:var(--ice)}
+  border-top:1px solid var(--navy-line);padding-top:clamp(14px,1.5vw,22px)}
 
 /* ---------- RESPONSIVO ---------- */
 @media (max-width:1024px){
@@ -574,14 +539,14 @@ strong{font-weight:600;color:var(--white)}
   .flow .arrow-x{width:100%;transform:rotate(90deg);height:30px}
   .journey,.g5{grid-template-columns:repeat(2,1fr)}
   .jline{display:none}
-  .g4{grid-template-columns:repeat(2,1fr)}
-  .g6{grid-template-columns:repeat(2,1fr)}
+  .g4,.g6{grid-template-columns:repeat(2,1fr)}
   .tl{grid-template-columns:repeat(4,1fr);gap:16px}
   .tl-line{display:none}
+  .close-grid{grid-template-columns:1fr}
   .act-row{grid-template-columns:clamp(46px,5vw,72px) minmax(0,1fr);row-gap:10px}
   .act-side{grid-column:2;justify-content:flex-start;text-align:left}
   .act-side > div{align-items:flex-start}
-  .close-grid{grid-template-columns:1fr}
+  .cover-seal{width:clamp(120px,17vw,190px)}
 }
 @media (max-width:760px){
   .deck{scroll-snap-type:none}
@@ -590,25 +555,21 @@ strong{font-weight:600;color:var(--white)}
   .vs-arrow{width:100%;height:44px;transform:rotate(90deg)}
   .tl{grid-template-columns:repeat(2,1fr)}
   .gates{grid-template-columns:1fr}
-  .dots{display:none}
-  .hint{display:none}
+  .dots,.hint{display:none}
   .bar-row{grid-template-columns:1fr;gap:8px}
   .bar-key{text-align:left;display:flex;align-items:baseline;gap:10px}
   .bar-key .n{margin-top:0}
-  .cover-melon{display:none}
   .s-brand img{height:22px}
   .hs em{display:none}
-  .acts-lead{border-left:none;padding-left:0}
   .lnk{display:none}
   .act-steps{gap:9px 18px}
-  #s5 .rv[style]{grid-template-columns:1fr!important}
-  .ring{width:104px;height:104px}
+  .acts-lead{border-left:none;padding-left:0}
+  .cover-seal{position:static;transform:none;animation:none;margin-bottom:20px;width:150px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
   .rv{opacity:1;transform:none}
 }
-/* impressão / PDF */
 @media print{
   .dots,.hint,.progress{display:none!important}
   .deck{height:auto;overflow:visible}
@@ -629,13 +590,15 @@ strong{font-weight:600;color:var(--white)}
 <main class="deck" id="deck">
 
 <!-- ══════════════ 01 · CAPA ══════════════ -->
-<section class="slide" id="s1">
+<section class="slide sk-ink" id="s1">
   <div class="cover-bg"><img src="assets/campo-noturno.jpg" alt="Campo de melão da Agrícola Famosa"></div>
-  <svg class="cover-melon" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <circle cx="100" cy="100" r="76" stroke="#E9A93C" stroke-width="1.6"/>
-    <path d="M24 100q76-42 152 0M24 100q76 42 152 0M100 24q-42 76 0 152M100 24q42 76 0 152" stroke="#E9A93C" stroke-width="1.1" opacity=".65"/>
-    <path d="M46 62q54 26 108 0M46 138q54-26 108 0M62 46q26 54 0 108M138 46q-26 54 0 108" stroke="#E9A93C" stroke-width=".9" opacity=".45"/>
-  </svg>
+  <div class="cover-seal rv">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path class="a-float" d="M20 4l4.6 9.9 10.6 1.4-7.7 7.5 1.9 10.7L20 28.4 10.6 33.5l1.9-10.7-7.7-7.5 10.6-1.4L20 4z"/>
+    </svg>
+    <div class="cs-t">O mais doce,<br>escolhido<br>para você</div>
+    <div class="cs-s">Curadoria São Luiz</div>
+  </div>
 
   <div class="cover-in">
     <div class="cover-logos rv">
@@ -648,7 +611,7 @@ strong{font-weight:600;color:var(--white)}
       <svg class="ico" style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path class="a-pulse" d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="5"/></svg>
       Proposta exclusiva · piloto 2026</span></div>
 
-    <h1 class="rv" style="margin-top:16px">Colhemos o mais doce<br><span class="lime">pensando em você.</span></h1>
+    <h1 class="rv" style="margin-top:16px">Colhemos o mais doce<br>pensando em <span class="mark">você</span>.</h1>
 
     <p class="cover-tag rv">Trade marketing <b>criado do zero para o São Luiz</b>.<br>A rede escolhe. A Famosa comprova.</p>
 
@@ -662,7 +625,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 02 · O QUE MUDA ══════════════ -->
-<section class="slide" id="s2">
+<section class="slide sk-paper" id="s2">
   <header class="s-top">
     <div class="s-brand">
       <img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span>
@@ -674,7 +637,7 @@ strong{font-weight:600;color:var(--white)}
   <div class="s-body">
     <div class="rv" style="margin-bottom:clamp(18px,2.2vw,32px)">
       <span class="eyebrow">A virada de chave</span>
-      <h2>Antes de parecer Famosa, o projeto<br>precisa <span class="lime">parecer São Luiz</span></h2>
+      <h2>Antes de parecer Famosa,<br>o projeto precisa parecer <span class="mark">São Luiz</span></h2>
       
     </div>
 
@@ -687,13 +650,13 @@ strong{font-weight:600;color:var(--white)}
         <div class="vs-h">Encher o hortifrúti com<br>campanha nacional</div>
         <p class="vs-p">A loja vira espaço de mídia de fornecedor.</p>
         <div style="margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:7px">
-          <span class="pill" style="border-color:rgba(242,121,61,.35);color:#F2A17D">excesso visual</span>
-          <span class="pill" style="border-color:rgba(242,121,61,.35);color:#F2A17D">loja vira suporte</span>
+          <span class="pill" >excesso visual</span>
+          <span class="pill" >loja vira suporte</span>
         </div>
       </div>
 
       <div class="vs-arrow">
-        <svg viewBox="0 0 80 40" fill="none" stroke="#A8DC4B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 80 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
           <path class="a-flow" d="M4 20h56" stroke-width="2.4"/>
           <path class="a-slide" d="M56 10l12 10-12 10"/>
         </svg>
@@ -714,7 +677,7 @@ strong{font-weight:600;color:var(--white)}
     </div>
 
     <div class="rv quote-band" style="margin-top:clamp(16px,1.8vw,26px)">
-      <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M3 21V9l9-6 9 6v12"/><path class="a-draw" style="stroke-dasharray:22" d="M9 21v-7h6v7"/></svg></span></div>
+      <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M3 21V9l9-6 9 6v12"/><path class="a-draw" style="stroke-dasharray:22" d="M9 21v-7h6v7"/></svg></span></div>
       <div>
         <div class="ql">A regra que vale para tudo</div>
         <div class="qt">Se a peça não puder existir na loja sem a campanha nacional ao redor, ela não entra.</div>
@@ -729,7 +692,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 03 · COMO FUNCIONA ══════════════ -->
-<section class="slide" id="s3">
+<section class="slide sk-ink" id="s3">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">03</span> Como funciona</div>
@@ -738,36 +701,36 @@ strong{font-weight:600;color:var(--white)}
   <div class="s-body">
     <div class="rv" style="margin-bottom:clamp(20px,2.4vw,36px)">
       <span class="eyebrow">A lógica em três passos</span>
-      <h2>A rede transforma doçura em <span class="lime">curadoria</span></h2>
+      <h2>A rede transforma doçura em <span class="mark">curadoria</span></h2>
       <p class="sub">Cada elo faz uma coisa só, e um puxa o outro.</p>
     </div>
 
     <div class="flow rv">
       <div class="flow-step">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
+          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
           <div class="flow-num">01</div>
         </div>
         <div class="flow-t">São Luiz escolhe</div>
         <p class="flow-p">Mostra ao cliente que o melão foi <strong>selecionado pela rede</strong>.</p>
       </div>
 
-      <div class="arrow-x"><svg viewBox="0 0 56 24" fill="none" stroke="#A8DC4B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="a-flow" d="M2 12h38"/><path class="a-slide" d="M38 5l9 7-9 7"/></svg></div>
+      <div class="arrow-x"><svg viewBox="0 0 56 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="a-flow" d="M2 12h38"/><path class="a-slide" d="M38 5l9 7-9 7"/></svg></div>
 
       <div class="flow-step">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path class="a-draw" style="stroke-dasharray:60" d="M12 2l7.5 3.5v6c0 4.6-3.2 8.9-7.5 10.5-4.3-1.6-7.5-5.9-7.5-10.5v-6L12 2z"/></svg></span></div>
+          <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path class="a-draw" style="stroke-dasharray:60" d="M12 2l7.5 3.5v6c0 4.6-3.2 8.9-7.5 10.5-4.3-1.6-7.5-5.9-7.5-10.5v-6L12 2z"/></svg></span></div>
           <div class="flow-num">02</div>
         </div>
         <div class="flow-t">Famosa comprova</div>
         <p class="flow-p">Origem e qualidade <strong>sustentam a recomendação</strong>.</p>
       </div>
 
-      <div class="arrow-x"><svg viewBox="0 0 56 24" fill="none" stroke="#A8DC4B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="a-flow" d="M2 12h38"/><path class="a-slide" d="M38 5l9 7-9 7"/></svg></div>
+      <div class="arrow-x"><svg viewBox="0 0 56 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="a-flow" d="M2 12h38"/><path class="a-slide" d="M38 5l9 7-9 7"/></svg></div>
 
       <div class="flow-step">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.6 12.6a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 7H6"/><circle class="a-pulse" cx="10" cy="20.5" r="1.4"/><circle class="a-pulse" cx="18" cy="20.5" r="1.4" style="animation-delay:.4s"/></svg></span></div>
+          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.6 12.6a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 7H6"/><circle class="a-pulse" cx="10" cy="20.5" r="1.4"/><circle class="a-pulse" cx="18" cy="20.5" r="1.4" style="animation-delay:.4s"/></svg></span></div>
           <div class="flow-num">03</div>
         </div>
         <div class="flow-t">O cliente decide</div>
@@ -776,7 +739,7 @@ strong{font-weight:600;color:var(--white)}
     </div>
 
     <div class="rv quote-band">
-      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:40" d="M4 15s2-6 8-6 8 6 8 6"/><circle cx="12" cy="9" r="2.2"/><path class="a-blink" d="M12 18v3"/></svg></span></div>
+      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:40" d="M4 15s2-6 8-6 8 6 8 6"/><circle cx="12" cy="9" r="2.2"/><path class="a-blink" d="M12 18v3"/></svg></span></div>
       <div>
         <div class="ql">A assinatura que vale em toda a loja</div>
         <div class="qt">“O mais doce, escolhido para você.”</div>
@@ -792,7 +755,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 04 · SISTEMA DE MARCAS ══════════════ -->
-<section class="slide" id="s4">
+<section class="slide sk-paper" id="s4">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">04</span> Quem assina o quê</div>
@@ -807,21 +770,21 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="bars rv">
       <div class="bar-row">
-        <div class="bar-key"><div class="p" style="color:#5C93F0">60%</div><div class="n">São Luiz</div></div>
+        <div class="bar-key"><div class="p" style="color:var(--navy)">60%</div><div class="n">São Luiz</div></div>
         <div class="bar-track"><div class="bar-fill f-sl" data-w="100">
           <span class="ico" style="width:22px;height:22px;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z"/><path class="a-blink" d="M9 21v-6h6v6"/></svg></span>
           <span class="bt">Voz e experiência<small>A rede fala com o cliente e assina a ativação</small></span>
         </div></div>
       </div>
       <div class="bar-row">
-        <div class="bar-key"><div class="p" style="color:var(--lime-bright)">30%</div><div class="n">Campanha</div></div>
+        <div class="bar-key"><div class="p" style="color:#4E7A1E">30%</div><div class="n">Campanha</div></div>
         <div class="bar-track"><div class="bar-fill f-cp" data-w="55">
           <span class="ico" style="width:22px;height:22px;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:46" d="M3 18c4-9 14-9 18 0"/><circle class="a-pulse" cx="12" cy="8" r="2"/></svg></span>
           <span class="bt">Doçura e cuidado<small>Azul, traço agrícola e detalhe dourado</small></span>
         </div></div>
       </div>
       <div class="bar-row">
-        <div class="bar-key"><div class="p" style="color:var(--gold)">10%</div><div class="n">Famosa</div></div>
+        <div class="bar-key"><div class="p" style="color:#A9741C">10%</div><div class="n">Famosa</div></div>
         <div class="bar-track"><div class="bar-fill f-fa" data-w="26">
           <span class="ico" style="width:22px;height:22px;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-float" cx="12" cy="12" r="8"/><path d="M4 12q8-5 16 0M4 12q8 5 16 0" opacity=".7"/></svg></span>
           <span class="bt">Produto e prova<small>Perto da fruta</small></span>
@@ -831,14 +794,14 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="g2 rv" style="margin-top:clamp(18px,2.2vw,32px)">
       <div class="card" style="display:flex;gap:15px;align-items:flex-start">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-slide" d="M3 12h18"/><path d="M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-slide" d="M3 12h18"/><path d="M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg></span></div>
         <div>
           <h3>Na prática</h3>
           <p class="sub" style="font-size:clamp(11.5px,.88vw,14.5px);margin-top:5px">Régua e porta-preço: São Luiz. Tag e selos: Famosa.</p>
         </div>
       </div>
-      <div class="card" style="display:flex;gap:15px;align-items:flex-start;border-color:rgba(233,169,60,.32);background:var(--gold-soft)">
-        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:50" d="M12 3l8 4v5c0 5-3.4 9.2-8 10.5C7.4 21.2 4 17 4 12V7l8-4z"/><path class="a-blink" d="M12 9v4M12 16h.01"/></svg></span></div>
+      <div class="card" style="display:flex;gap:15px;align-items:flex-start;background:var(--gold-pale);color:var(--navy)">
+        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:50" d="M12 3l8 4v5c0 5-3.4 9.2-8 10.5C7.4 21.2 4 17 4 12V7l8-4z"/><path class="a-blink" d="M12 9v4M12 16h.01"/></svg></span></div>
         <div>
           <h3>Atenção antes de produzir</h3>
           <p class="sub" style="font-size:clamp(11.5px,.88vw,14.5px);margin-top:5px">“Garantia de doçura”, “origem rastreável” e “padrão exportação” só após validação técnica e jurídica.</p>
@@ -854,7 +817,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 05 · REGRAS NA LOJA ══════════════ -->
-<section class="slide" id="s5">
+<section class="slide sk-ink" id="s5">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">05</span> Regras na loja</div>
@@ -883,13 +846,13 @@ strong{font-weight:600;color:var(--white)}
           <div><b>no máximo</b>da frente do móvel com comunicação</div>
         </div>
         <div class="rule">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-rise" d="M4 20V9M10 20V5M16 20v-8M22 20H2"/></svg></span></div>
+          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-rise" d="M4 20V9M10 20V5M16 20v-8M22 20H2"/></svg></span></div>
           <div><b>Nada mais alto que a fruta</b>nenhuma peça passa da altura do melão</div>
         </div>
 
         <div class="banned">
           <div class="banned-h">
-            <span class="ico" style="width:15px;height:15px"><svg viewBox="0 0 24 24" fill="none" stroke="#F2793D" stroke-width="3" stroke-linecap="round"><path class="a-pop" d="M6 6l12 12M18 6L6 18"/></svg></span>
+            <span class="ico" style="width:15px;height:15px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path class="a-pop" d="M6 6l12 12M18 6L6 18"/></svg></span>
             Fora do projeto
           </div>
           <div class="banned-g">
@@ -908,7 +871,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 06 · JORNADA ══════════════ -->
-<section class="slide" id="s6">
+<section class="slide sk-paper" id="s6">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">06</span> A jornada do cliente</div>
@@ -923,27 +886,27 @@ strong{font-weight:600;color:var(--white)}
     <div class="journey rv">
       <div class="jline"></div>
       <div class="jn">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
         <div class="st">01</div><div class="tt">ESCOLHA</div>
         <p class="dd">Selo de curadoria na banca</p>
       </div>
       <div class="jn">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="3" y="5" width="18" height="14" rx="3"/><path class="a-draw" style="stroke-dasharray:16" d="M7 10h7M7 14h4"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="3" y="5" width="18" height="14" rx="3"/><path class="a-draw" style="stroke-dasharray:16" d="M7 10h7M7 14h4"/></svg></span></div>
         <div class="st">02</div><div class="tt">DOÇURA</div>
         <p class="dd">Mensagem no porta-preço</p>
       </div>
       <div class="jn">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/><circle class="a-pulse" cx="12" cy="7" r="1.4"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/><circle class="a-pulse" cx="12" cy="7" r="1.4"/></svg></span></div>
         <div class="st">03</div><div class="tt">PROVA</div>
         <p class="dd">Degustação no hortifrúti</p>
       </div>
       <div class="jn">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path class="a-float" d="M3 20c0-3.3 2.7-5.6 6-5.6s6 2.3 6 5.6"/><path class="a-blink" d="M17 8h5M19.5 5.5v5"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path class="a-float" d="M3 20c0-3.3 2.7-5.6 6-5.6s6 2.3 6 5.6"/><path class="a-blink" d="M17 8h5M19.5 5.5v5"/></svg></span></div>
         <div class="st">04</div><div class="tt">INDICAÇÃO</div>
         <p class="dd">Colaborador preparado</p>
       </div>
       <div class="jn">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-spin" d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-spin" d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span></div>
         <div class="st">05</div><div class="tt">RECOMPRA</div>
         <p class="dd">Bandeja pronta e indicação</p>
       </div>
@@ -951,13 +914,13 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="g2 rv" style="margin-top:clamp(16px,1.9vw,28px);align-items:center">
       <div class="quote-band" style="margin-top:0;height:100%">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-4.2-1L3 20l1.2-4.6A8.4 8.4 0 0 1 3 11.5C3 6.8 7 3 12 3s9 3.8 9 8.5z"/><path class="a-blink" d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-4.2-1L3 20l1.2-4.6A8.4 8.4 0 0 1 3 11.5C3 6.8 7 3 12 3s9 3.8 9 8.5z"/><path class="a-blink" d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span></div>
         <div>
           <div class="ql">Uma frase em toda a jornada</div>
           <div class="qt">“Esse é o melão que o São Luiz escolheu para você.”</div>
         </div>
       </div>
-      <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-brd);position:relative">
+      <div style="border-radius:var(--r-xl) var(--r-xl) var(--r) var(--r);overflow:hidden;position:relative">
         <img src="assets/mockup-degustacao.jpg" alt="Degustação do Melão Famosa dentro do hortifrúti" style="width:100%;height:clamp(150px,15vw,240px);object-fit:cover;object-position:center 42%;display:block">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(6,20,49,.92))"></div>
         <div style="position:absolute;left:16px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -974,7 +937,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 07 · AS PEÇAS ══════════════ -->
-<section class="slide" id="s7">
+<section class="slide sk-ink" id="s7">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">07</span> O enxoval</div>
@@ -994,33 +957,33 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="g6 rv">
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="4" y="19" width="56" height="11" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="7" y="23" width="20" height="3" rx="1.5" fill="#A8DC4B"/><rect x="30" y="23" width="27" height="3" rx="1.5" fill="rgba(255,255,255,.34)"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="4" y="19" width="56" height="11" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="7" y="23" width="20" height="3" rx="1.5" fill="currentColor"/><rect x="30" y="23" width="27" height="3" rx="1.5" fill="rgba(255,255,255,.34)"/></svg></div>
         <div><div class="pn">Régua frontal</div><p class="pd">Identifica sem cobrir o móvel.</p><span class="pm">8–10 cm de altura</span></div>
       </div>
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect x="24.5" y="9" width="15" height="2.6" rx="1.3" fill="rgba(255,255,255,.42)"/><rect class="a-pulse" x="24.5" y="19" width="15" height="9" rx="2" fill="#A8DC4B"/><rect x="24.5" y="32" width="10" height="2.4" rx="1.2" fill="rgba(255,255,255,.28)"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect x="24.5" y="9" width="15" height="2.6" rx="1.3" fill="rgba(255,255,255,.42)"/><rect class="a-pulse" x="24.5" y="19" width="15" height="9" rx="2" fill="currentColor"/><rect x="24.5" y="32" width="10" height="2.4" rx="1.2" fill="rgba(255,255,255,.28)"/></svg></div>
         <div><div class="pn">Porta-preço</div><p class="pd">Une preço e promessa de doçura.</p><span class="pm">formato A5</span></div>
       </div>
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><path class="a-float" d="M32 5v7" stroke="rgba(255,255,255,.4)" stroke-width="1.4" stroke-linecap="round"/><circle class="a-float" cx="32" cy="27" r="15" fill="#12336E" stroke="#A8DC4B" stroke-width="1.4"/><path class="a-tick" d="M26 27.5l4 4 8-8.5" stroke="#A8DC4B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><path class="a-float" d="M32 5v7" stroke="rgba(255,255,255,.4)" stroke-width="1.4" stroke-linecap="round"/><circle class="a-float" cx="32" cy="27" r="15" fill="#12336E" stroke="currentColor" stroke-width="1.4"/><path class="a-tick" d="M26 27.5l4 4 8-8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div><div class="pn">Tag da fruta</div><p class="pd">Selo “Escolha São Luiz” na fruta.</p><span class="pm">diâmetro 7 cm</span></div>
       </div>
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="24.5" y="10" width="12" height="2.6" rx="1.3" fill="#A8DC4B"/><rect x="24.5" y="17" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="23" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="29" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="35" width="8" height="2.2" rx="1.1" fill="rgba(255,255,255,.18)"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="24.5" y="10" width="12" height="2.6" rx="1.3" fill="currentColor"/><rect x="24.5" y="17" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="23" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="29" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="35" width="8" height="2.2" rx="1.1" fill="rgba(255,255,255,.18)"/></svg></div>
         <div><div class="pn">Card de escolha</div><p class="pd">Ensina a reconhecer ponto e aroma.</p><span class="pm">formato A5</span></div>
       </div>
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="15" y="14" width="34" height="21" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><circle class="a-pulse" cx="22.5" cy="24.5" r="4" fill="#A8DC4B"/><rect x="30" y="20" width="15" height="2.4" rx="1.2" fill="rgba(255,255,255,.4)"/><rect x="30" y="26" width="11" height="2.4" rx="1.2" fill="rgba(255,255,255,.24)"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="15" y="14" width="34" height="21" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><circle class="a-pulse" cx="22.5" cy="24.5" r="4" fill="currentColor"/><rect x="30" y="20" width="15" height="2.4" rx="1.2" fill="rgba(255,255,255,.4)"/><rect x="30" y="26" width="11" height="2.4" rx="1.2" fill="rgba(255,255,255,.24)"/></svg></div>
         <div><div class="pn">Etiqueta de bandeja</div><p class="pd">Assinatura mantida após o corte.</p><span class="pm">10 × 7 cm</span></div>
       </div>
       <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="24" y="9" width="17" height="30" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><path class="a-float" d="M29 14h7l-.9 5a2.7 2.7 0 0 1-5.2 0L29 14z" fill="none" stroke="#A8DC4B" stroke-width="1.5" stroke-linejoin="round"/><path d="M32.5 21v5M30 26.5h5" stroke="#A8DC4B" stroke-width="1.5" stroke-linecap="round"/><rect x="27" y="31" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/></svg></div>
+        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="24" y="9" width="17" height="30" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><path class="a-float" d="M29 14h7l-.9 5a2.7 2.7 0 0 1-5.2 0L29 14z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M32.5 21v5M30 26.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="27" y="31" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/></svg></div>
         <div><div class="pn">Card de prova</div><p class="pd">Roteiro da degustação para a equipe.</p><span class="pm">formato A6</span></div>
       </div>
     </div>
 
     <div class="rv quote-band" style="margin-top:clamp(16px,1.8vw,26px)">
-      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-spin" cx="12" cy="12" r="8" stroke-dasharray="4 5"/><circle class="a-pulse" cx="12" cy="12" r="3"/></svg></span></div>
+      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-spin" cx="12" cy="12" r="8" stroke-dasharray="4 5"/><circle class="a-pulse" cx="12" cy="12" r="3"/></svg></span></div>
       <div>
         <div class="ql">Diretriz de criação</div>
         <p class="sub" style="font-size:clamp(12px,.92vw,15px)">Azul como <strong>assinatura pontual</strong>, nunca como massa dominante.</p>
@@ -1035,7 +998,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 08 · AS TRÊS ATIVAÇÕES ══════════════ -->
-<section class="slide" id="s8">
+<section class="slide sk-paper" id="s8">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">08</span> As ativações</div>
@@ -1045,7 +1008,7 @@ strong{font-weight:600;color:var(--white)}
     <div class="rv acts-head">
       <div>
         <span class="eyebrow">O que acontece nas 4 semanas</span>
-        <h2>Três frentes, <span class="lime">uma só banca</span></h2>
+        <h2>Três frentes, <span class="mark">uma só banca</span></h2>
       </div>
       <p class="acts-lead">Cada frente resolve uma dúvida do cliente:<br>o que levar, por que confiar e a quem perguntar.</p>
     </div>
@@ -1134,7 +1097,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 09 · LOJAS E CANAIS ══════════════ -->
-<section class="slide" id="s9">
+<section class="slide sk-ink" id="s9">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">09</span> Onde acontece</div>
@@ -1149,7 +1112,7 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="g2 rv" style="align-items:stretch;margin-bottom:clamp(14px,1.6vw,24px)">
       <div class="store-card anchor">
-        <div class="store-tag" style="color:var(--lime-bright)">
+        <div class="store-tag">
           <span class="ico" style="width:18px;height:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle class="a-pulse" cx="12" cy="10" r="2.4"/></svg></span>
           2 lojas-âncora · experiência completa
         </div>
@@ -1157,7 +1120,7 @@ strong{font-weight:600;color:var(--white)}
         <p class="sub" style="font-size:clamp(11px,.85vw,14px)">KV completo, as 6 peças, 4 sábados de prova e treinamento do time.</p>
       </div>
       <div class="store-card ext">
-        <div class="store-tag" style="color:var(--muted)">
+        <div class="store-tag">
           <span class="ico" style="width:18px;height:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="3" y="8" width="18" height="12" rx="2"/><path class="a-blink" d="M3 8l2-4h14l2 4"/></svg></span>
           3 lojas de extensão · indicadas pela rede
         </div>
@@ -1170,21 +1133,21 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="g3 rv">
       <div class="chan">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path class="a-blink" d="M9 20v-6h6v6"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M3 9l2-5h14l2 5"/><path d="M4 9v11h16V9"/><path class="a-blink" d="M9 20v-6h6v6"/></svg></span></div>
         <div><div class="ct">Loja</div><p class="cd">Peças discretas + áudio nos horários de prova</p></div>
       </div>
       <div class="chan">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="a-blink" cx="17" cy="7" r="1.2"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="a-blink" cx="17" cy="7" r="1.2"/></svg></span></div>
         <div><div class="ct">Social</div><p class="cd">Stories da escolha e da prova</p></div>
       </div>
       <div class="chan">
-        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M6 9V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M4 9h16l-1 12H5L4 9z"/><path class="a-draw" style="stroke-dasharray:14" d="M9 14h6"/></svg></span></div>
+        <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M6 9V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M4 9h16l-1 12H5L4 9z"/><path class="a-draw" style="stroke-dasharray:14" d="M9 14h6"/></svg></span></div>
         <div><div class="ct">Colaborador</div><p class="cd">Comunicado, ranking e reconhecimento</p></div>
       </div>
     </div>
 
     <div class="rv quote-band" style="margin-top:clamp(14px,1.6vw,24px)">
-      <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:34" d="M4 12h16"/><path class="a-slide" d="M15 7l5 5-5 5"/></svg></span></div>
+      <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:34" d="M4 12h16"/><path class="a-slide" d="M15 7l5 5-5 5"/></svg></span></div>
       <div>
         <div class="ql">Três mensagens, sempre nessa ordem</div>
         <div class="qt" style="font-style:normal;font-size:clamp(13px,1.15vw,19px)">1. O São Luiz escolheu &nbsp;→&nbsp; 2. Prove o mais doce &nbsp;→&nbsp; 3. Leve inteiro ou pronto</div>
@@ -1199,7 +1162,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 10 · MENSURAÇÃO ══════════════ -->
-<section class="slide" id="s10">
+<section class="slide sk-paper" id="s10">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">10</span> Como medimos</div>
@@ -1208,18 +1171,18 @@ strong{font-weight:600;color:var(--white)}
   <div class="s-body">
     <div class="rv" style="margin-bottom:clamp(16px,2vw,32px)">
       <span class="eyebrow">Metas do piloto</span>
-      <h2>A régua mede valor <span class="lime">para a rede</span></h2>
+      <h2>A régua mede valor <span class="mark">para a rede</span></h2>
     </div>
 
     <div class="g4 rv">
       <div class="kpi ring-card">
         <div class="ring">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#A8DC4B" stroke-width="10" stroke-linecap="round"
+            <circle class="ring-t" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="10"/>
+            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#6FA02C" stroke-width="10" stroke-linecap="round"
                     transform="rotate(-90 60 60)" stroke-dasharray="327" stroke-dashoffset="327" data-off="82" style="transition-delay:0.05s"/>
           </svg>
-          <span class="ring-v" style="color:#A8DC4B">+15%</span>
+          <span class="ring-v" style="color:#6FA02C">+15%</span>
         </div>
         <div class="ring-l">Giro</div>
         <p class="ring-h">vs. base e loja de controle</p>
@@ -1227,11 +1190,11 @@ strong{font-weight:600;color:var(--white)}
       <div class="kpi ring-card">
         <div class="ring">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#E9A93C" stroke-width="10" stroke-linecap="round"
+            <circle class="ring-t" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="10"/>
+            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#D9932A" stroke-width="10" stroke-linecap="round"
                     transform="rotate(-90 60 60)" stroke-dasharray="327" stroke-dashoffset="327" data-off="16" style="transition-delay:0.18s"/>
           </svg>
-          <span class="ring-v" style="color:#E9A93C">&lt;5%</span>
+          <span class="ring-v" style="color:#D9932A">&lt;5%</span>
         </div>
         <div class="ring-l">Ruptura</div>
         <p class="ring-h">banca sem produto</p>
@@ -1239,11 +1202,11 @@ strong{font-weight:600;color:var(--white)}
       <div class="kpi ring-card">
         <div class="ring">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#A8DC4B" stroke-width="10" stroke-linecap="round"
+            <circle class="ring-t" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="10"/>
+            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#6FA02C" stroke-width="10" stroke-linecap="round"
                     transform="rotate(-90 60 60)" stroke-dasharray="327" stroke-dashoffset="327" data-off="33" style="transition-delay:0.31s"/>
           </svg>
-          <span class="ring-v" style="color:#A8DC4B">≥90%</span>
+          <span class="ring-v" style="color:#6FA02C">≥90%</span>
         </div>
         <div class="ring-l">Execução</div>
         <p class="ring-h">peças corretas nas 5 lojas</p>
@@ -1251,11 +1214,11 @@ strong{font-weight:600;color:var(--white)}
       <div class="kpi ring-card">
         <div class="ring">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#5C93F0" stroke-width="10" stroke-linecap="round"
+            <circle class="ring-t" cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="10"/>
+            <circle class="ring-f" cx="60" cy="60" r="52" fill="none" stroke="#2F6BD4" stroke-width="10" stroke-linecap="round"
                     transform="rotate(-90 60 60)" stroke-dasharray="327" stroke-dashoffset="327" data-off="124" style="transition-delay:0.44s"/>
           </svg>
-          <span class="ring-v" style="color:#5C93F0">medir</span>
+          <span class="ring-v" style="color:#2F6BD4">medir</span>
         </div>
         <div class="ring-l">Bandeja</div>
         <p class="ring-h">giro da bandeja sobre o inteiro</p>
@@ -1276,7 +1239,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 12 · CRONOGRAMA E GOVERNANÇA ══════════════ -->
-<section class="slide" id="s12">
+<section class="slide sk-ink" id="s12">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">11</span> Prazo e aprovações</div>
@@ -1308,15 +1271,15 @@ strong{font-weight:600;color:var(--white)}
 
     <div class="gates rv" style="margin-bottom:clamp(16px,1.9vw,28px)">
       <div class="gate">
-        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M4 20V6a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path class="a-draw" style="stroke-dasharray:14" d="M9 13h6"/></svg></span></div>
+        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M4 20V6a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path class="a-draw" style="stroke-dasharray:14" d="M9 13h6"/></svg></span></div>
         <div><div class="gn">PORTÃO 1</div><div class="gt">Medidas e claims validados</div></div>
       </div>
       <div class="gate">
-        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-float" cx="12" cy="12" r="8.5"/><path class="a-tick" d="M8.4 12.4l2.5 2.5 4.7-5"/></svg></span></div>
+        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-float" cx="12" cy="12" r="8.5"/><path class="a-tick" d="M8.4 12.4l2.5 2.5 4.7-5"/></svg></span></div>
         <div><div class="gn">PORTÃO 2</div><div class="gt">Aprovação final do São Luiz</div></div>
       </div>
       <div class="gate">
-        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:38" d="M3 17l5.5-5.5 4 4L21 7"/><path class="a-blink" d="M15 7h6v6"/></svg></span></div>
+        <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:38" d="M3 17l5.5-5.5 4 4L21 7"/><path class="a-blink" d="M15 7h6v6"/></svg></span></div>
         <div><div class="gn">PORTÃO 3</div><div class="gt">Decisão de rollout</div></div>
       </div>
     </div>
@@ -1366,7 +1329,7 @@ strong{font-weight:600;color:var(--white)}
 </section>
 
 <!-- ══════════════ 13 · PRÓXIMOS PASSOS ══════════════ -->
-<section class="slide" id="s13">
+<section class="slide sk-ink" id="s13">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
     <div class="s-kicker"><span class="n">12</span> Próxima decisão</div>
@@ -1402,7 +1365,7 @@ strong{font-weight:600;color:var(--white)}
       <div class="rv">
         <div class="card" style="padding:clamp(18px,1.8vw,32px)">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(14px,1.5vw,22px)">
-            <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="4" y="4" width="16" height="17" rx="2"/><path d="M9 2v4M15 2v4"/><path class="a-tick" d="M9 13l2 2 4-4"/></svg></span></div>
+            <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect class="a-float" x="4" y="4" width="16" height="17" rx="2"/><path d="M9 2v4M15 2v4"/><path class="a-tick" d="M9 13l2 2 4-4"/></svg></span></div>
             <h3>Cinco passos para destravar</h3>
           </div>
           <ul class="next-list">
@@ -1415,7 +1378,7 @@ strong{font-weight:600;color:var(--white)}
         </div>
 
         <div class="quote-band" style="margin-top:clamp(13px,1.4vw,22px)">
-          <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
+          <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9L12 2z"/></svg></span></div>
           <div>
             <div class="ql">A promessa</div>
             <div class="qt">Colhemos o mais doce pensando em você.</div>
@@ -1430,7 +1393,7 @@ strong{font-weight:600;color:var(--white)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
       Proposta 75 LAB · Super Mercadinhos São Luiz × Melão Famosa
     </span>
-    <span style="font-weight:700;letter-spacing:.14em;color:var(--muted)">75 LAB</span>
+    <span style="font-weight:800;letter-spacing:.14em">75 LAB</span>
   </div>
 </section>
 
@@ -1510,6 +1473,13 @@ strong{font-weight:600;color:var(--white)}
       const t = document.querySelector(a.getAttribute('href'));
       if(t) t.scrollIntoView({behavior:'smooth'});
     });
+  });
+
+  /* logos escuros nas telas de papel */
+  document.querySelectorAll('.sk-paper img').forEach(img=>{
+    const src = img.getAttribute('src');
+    if(src && src.includes('logo-') && src.includes('-branco')) img.src = src.replace('-branco','');
+    if(src && src.includes('logo-famosa-mais.png')) img.src = src.replace('.png','-escuro.png');
   });
 
   slides[0].classList.add('live');
