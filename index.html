@@ -337,36 +337,12 @@ strong{font-weight:700}
 .f-cp{background:var(--lime);color:var(--navy)}
 .f-fa{background:var(--gold);color:var(--navy)}
 
-/* 05 REGRAS + FOTO EM ARCO */
-.shot{position:relative;overflow:hidden;margin:0;border-radius:var(--r-xl) var(--r-xl) var(--r) var(--r)}
-.shot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.shot::before{content:"";display:block;padding-top:56%}
-.shot-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,49,.3) 0%,transparent 34%,transparent 58%,rgba(7,26,49,.95) 100%)}
-.shot figcaption{position:absolute;left:clamp(14px,1.4vw,24px);right:clamp(14px,1.4vw,24px);bottom:clamp(12px,1.2vw,20px);
-  display:flex;align-items:center;gap:11px;flex-wrap:wrap;font-size:clamp(10.5px,.8vw,13px);color:var(--on-ink-dim)}
-.hs{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:9px;z-index:3}
-.hs i{width:clamp(24px,2vw,32px);height:clamp(24px,2vw,32px);border-radius:50%;flex:none;
-  background:var(--lime);color:var(--navy);font-weight:800;font-style:normal;
-  font-size:clamp(10px,.78vw,13px);display:flex;align-items:center;justify-content:center;animation:hsp 2.4s ease-out infinite}
-@keyframes hsp{0%{box-shadow:0 0 0 0 rgba(140,198,63,.6)}70%{box-shadow:0 0 0 16px rgba(140,198,63,0)}100%{box-shadow:0 0 0 0 rgba(140,198,63,0)}}
-.hs em{font-style:normal;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--navy);background:var(--cream);padding:6px 12px;border-radius:100px;white-space:nowrap}
-.hs:nth-of-type(2) i{animation-delay:.8s} .hs:nth-of-type(3) i{animation-delay:1.6s}
-.rule{display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);border-radius:var(--r);
-  padding:clamp(12px,1.15vw,19px) clamp(14px,1.35vw,22px);transition:.4s}
-.sk-ink .rule{background:var(--navy-lift)} .sk-paper .rule{background:#fff}
-.rule:hover{transform:translateX(4px)}
-.rule-max{background:var(--lime)!important;color:var(--navy)!important}
-.rule-max .bn-sm{color:var(--navy)!important}
-.rule > div:last-child{font-size:clamp(11px,.86vw,14px);font-weight:400;line-height:1.4;opacity:.78}
-.rule b{display:block;font-family:var(--fd);font-size:clamp(12px,.96vw,15.5px);font-weight:700;margin-bottom:2px;opacity:1}
-.rule-max > div:last-child{opacity:.86}
-.banned{border-radius:var(--r);padding:clamp(12px,1.15vw,19px) clamp(14px,1.35vw,22px);background:var(--clay-pale);color:#7A3418}
-.banned-h{display:flex;align-items:center;gap:9px;font-size:clamp(9px,.7vw,11.5px);font-weight:800;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:11px}
-.banned-g{display:flex;flex-wrap:wrap;gap:7px}
-.banned-g span{font-size:clamp(9.5px,.76vw,12.5px);font-weight:600;padding:5px 12px;border-radius:100px;
-  background:rgba(194,86,43,.14);text-decoration:line-through;text-decoration-color:rgba(194,86,43,.55)}
+/* 05 PEÇAS APLICADAS */
+.applied{margin:0;flex:1 1 0;min-height:0;border-radius:var(--r-xl) var(--r-xl) var(--r) var(--r);
+  overflow:hidden;position:relative;display:block}
+.applied img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%;display:block;
+  transform:scale(1);transition:transform 8s ease-out;animation:slowzoom 24s ease-in-out infinite}
+@keyframes slowzoom{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 
 /* 06 JORNADA */
 .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,16px);position:relative}
@@ -429,13 +405,13 @@ strong{font-weight:700}
 .seal-line{background:none;border:1.5px solid var(--lime)}
 .sk-paper .seal-line{color:#4E7A1E} .sk-ink .seal-line{color:var(--lime-lt)}
 .act-logo{height:clamp(17px,1.5vw,24px);width:auto;animation:afloat 4.2s ease-in-out infinite}
-.act-lead{font-size:clamp(10.5px,.82vw,13.5px);font-weight:400;line-height:1.45;margin-bottom:clamp(8px,.85vw,14px);opacity:.62}
-.act-steps{display:flex;align-items:flex-start;flex-wrap:wrap;gap:clamp(5px,.6vw,10px)}
-.act-steps > span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 118px}
-.act-steps b{font-family:var(--fd);font-size:clamp(10.5px,.84vw,14px);font-weight:700}
+.act-lead{font-size:clamp(11px,.86vw,14px);font-weight:400;line-height:1.45;margin-bottom:clamp(10px,1vw,16px);opacity:.6}
+.act-steps{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(8px,.9vw,15px)}
+.act-steps > span{display:flex;align-items:center;min-width:0;flex:0 0 auto}
+.act-steps b{font-family:var(--fd);font-size:clamp(11.5px,.94vw,15.5px);font-weight:700}
 .sk-paper .act-steps b{color:#4E7A1E} .sk-ink .act-steps b{color:var(--lime-lt)}
 .act-steps em{font-style:normal;font-size:clamp(9.5px,.75vw,12.5px);font-weight:400;line-height:1.35;opacity:.66}
-.lnk{width:clamp(20px,2vw,40px);height:12px;flex:none;margin-top:5px;position:relative;color:var(--lime)}
+.lnk{width:clamp(20px,2vw,38px);height:12px;flex:none;position:relative;color:var(--lime)}
 .lnk::before{content:"";position:absolute;left:0;right:6px;top:50%;height:1.6px;transform:translateY(-50%);
   background:linear-gradient(90deg,currentColor 0 5px,transparent 5px 11px) 0/11px 1.6px repeat-x;animation:lnkflow 1.4s linear infinite}
 @keyframes lnkflow{to{background-position:11px 0}}
@@ -457,7 +433,7 @@ strong{font-weight:700}
 
 /* 09 LOJAS + CANAIS */
 .store-card{border-radius:var(--r-lg);padding:clamp(16px,1.55vw,28px);display:flex;flex-direction:column;gap:13px}
-.anchor{background:var(--lime);color:var(--navy)}
+.anchor{background:var(--lime);color:var(--navy);justify-content:center}
 .sk-ink .ext{background:var(--navy-lift)} .sk-paper .ext{background:#fff}
 .store-tag{display:flex;align-items:center;gap:10px;font-size:clamp(9px,.7vw,11.5px);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 .anchor .store-tag{color:#3F6417}
@@ -560,7 +536,6 @@ strong{font-weight:700}
   .bar-key{text-align:left;display:flex;align-items:baseline;gap:10px}
   .bar-key .n{margin-top:0}
   .s-brand img{height:22px}
-  .hs em{display:none}
   .lnk{display:none}
   .act-steps{gap:9px 18px}
   .acts-lead{border-left:none;padding-left:0}
@@ -820,53 +795,23 @@ strong{font-weight:700}
 <section class="slide sk-ink" id="s5">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">05</span> Regras na loja</div>
+    <div class="s-kicker"><span class="n">05</span> As peças aplicadas</div>
   </header>
 
   <div class="s-body">
-    <div class="rv" style="margin-bottom:clamp(13px,1.6vw,24px)">
+    <div class="rv" style="margin-bottom:clamp(14px,1.7vw,26px)">
       <span class="eyebrow">Ambientação</span>
-      <h2>A campanha toca o produto, <span class="lime">não toma a loja</span></h2>
+      <h2>Uma comunicação feita especialmente para <span class="mark">São Luiz</span></h2>
     </div>
 
-    <div class="rv" style="display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(14px,1.5vw,26px);align-items:stretch">
-
-      <figure class="shot">
-        <img src="assets/mockup-gondola.jpg" alt="Banca de melão com a comunicação São Luiz × Melão Famosa">
-        <span class="shot-grad"></span>
-        <b class="hs" style="left:49.5%;top:21%"><i>1</i><em>Porta-preço</em></b>
-        <b class="hs" style="left:19%;top:46%"><i>2</i><em>Tag na fruta</em></b>
-        <b class="hs" style="left:47%;top:67%"><i>3</i><em>Régua frontal</em></b>
-        <figcaption><span class="pill pill-lime">só 3 pontos de contato</span> todo o resto da banca continua São Luiz</figcaption>
-      </figure>
-
-      <div style="display:flex;flex-direction:column;gap:clamp(10px,1.05vw,16px)">
-        <div class="rule rule-max">
-          <div class="bn-sm" data-count="15" data-suffix="%">0</div>
-          <div><b>no máximo</b>da frente do móvel com comunicação</div>
-        </div>
-        <div class="rule">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-rise" d="M4 20V9M10 20V5M16 20v-8M22 20H2"/></svg></span></div>
-          <div><b>Nada mais alto que a fruta</b>nenhuma peça passa da altura do melão</div>
-        </div>
-
-        <div class="banned">
-          <div class="banned-h">
-            <span class="ico" style="width:15px;height:15px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path class="a-pop" d="M6 6l12 12M18 6L6 18"/></svg></span>
-            Fora do projeto
-          </div>
-          <div class="banned-g">
-            <span>pórtico</span><span>adesivo de piso</span><span>display solto</span>
-            <span>testeira alta</span><span>envelopamento</span><span>excesso de azul</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <figure class="applied rv">
+      <img src="assets/mockup-gondola.jpg" alt="Peças do Melão Famosa aplicadas na banca do Super Mercadinhos São Luiz">
+    </figure>
   </div>
 
   <div class="s-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
-    Lista final por loja fechada na visita técnica, com o gerente.
+    Mockup ilustrativo; aplicação final depende das medidas de cada loja.
   </div>
 </section>
 
@@ -1010,7 +955,7 @@ strong{font-weight:700}
         <span class="eyebrow">O que acontece nas 4 semanas</span>
         <h2>Três frentes, <span class="mark">uma só banca</span></h2>
       </div>
-      <p class="acts-lead">Cada frente resolve uma dúvida do cliente:<br>o que levar, por que confiar e a quem perguntar.</p>
+      <p class="acts-lead">Uma resolve o que levar, outra a quem perguntar,<br>a terceira o que a banca comunica.</p>
     </div>
 
     <div class="acts rv">
@@ -1024,16 +969,15 @@ strong{font-weight:700}
           </div>
           <p class="act-lead">Dentro do hortifrúti, encaixada na bancada. Sem ilha promocional.</p>
           <div class="act-steps">
-            <span><b>Convidar</b><em>“Quer provar a escolha do São Luiz?”</em></span>
+            <span><b>Convidar</b></span>
             <i class="lnk"></i>
-            <span><b>Servir</b><em>fatia gelada e padronizada</em></span>
+            <span><b>Servir</b></span>
             <i class="lnk"></i>
-            <span><b>Fechar</b><em>preço, inteiro e bandeja</em></span>
+            <span><b>Fechar</b></span>
           </div>
         </div>
         <div class="act-side">
-          <div><b>4</b><span>sábados</span></div>
-          <div><b>2</b><span>lojas-âncora</span></div>
+          <div><b>4</b><span>sábados de prova</span></div>
         </div>
       </article>
 
@@ -1046,18 +990,17 @@ strong{font-weight:700}
           </div>
           <p class="act-lead">Programa exclusivo da rede, com linguagem e reconhecimento São Luiz.</p>
           <div class="act-steps">
-            <span><b>Conhecer</b><em>vídeo de 3 min + prova interna</em></span>
+            <span><b>Conhecer</b></span>
             <i class="lnk"></i>
-            <span><b>Indicar</b><em>frase pronta para o cliente</em></span>
+            <span><b>Indicar</b></span>
             <i class="lnk"></i>
-            <span><b>Cuidar</b><em>missão semanal na banca</em></span>
+            <span><b>Cuidar</b></span>
             <i class="lnk"></i>
-            <span><b>Celebrar</b><em>ranking entre as 5 lojas</em></span>
+            <span><b>Celebrar</b></span>
           </div>
         </div>
         <div class="act-side">
           <div><b>5</b><span>lojas no ranking</span></div>
-          <div class="side-tag">prêmio coletivo</div>
         </div>
       </article>
 
@@ -1070,18 +1013,17 @@ strong{font-weight:700}
           </div>
           <p class="act-lead">As seis peças trabalhando juntas, do melão inteiro até a bandeja.</p>
           <div class="act-steps">
-            <span><b>Sinalizar</b><em>régua e porta-preço no móvel</em></span>
+            <span><b>Sinalizar</b></span>
             <i class="lnk"></i>
-            <span><b>Selar</b><em>tag da curadoria na fruta</em></span>
+            <span><b>Selar</b></span>
             <i class="lnk"></i>
-            <span><b>Orientar</b><em>card ensina a escolher o ponto</em></span>
+            <span><b>Orientar</b></span>
             <i class="lnk"></i>
-            <span><b>Seguir</b><em>etiqueta assina a bandeja</em></span>
+            <span><b>Seguir</b></span>
           </div>
         </div>
         <div class="act-side">
-          <div><b>6</b><span>peças</span></div>
-          <div><b>5</b><span>lojas</span></div>
+          <div><b>6</b><span>peças exclusivas</span></div>
         </div>
       </article>
 
@@ -1117,7 +1059,6 @@ strong{font-weight:700}
           2 lojas-âncora · experiência completa
         </div>
         <div class="store-names"><span>Abolição</span><span>Del Paseo</span></div>
-        <p class="sub" style="font-size:clamp(11px,.85vw,14px)">KV completo, as 6 peças, 4 sábados de prova e treinamento do time.</p>
       </div>
       <div class="store-card ext">
         <div class="store-tag">
