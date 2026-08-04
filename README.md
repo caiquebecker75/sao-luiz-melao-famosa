@@ -17,7 +17,7 @@ Apresentação HTML (deck de 12 telas) desenvolvida pela **75 LAB** para o time 
 | 06 | A jornada do cliente | 5 pontos conectados + mockup de PDV |
 | 07 | O enxoval | As 6 peças exclusivas |
 | 08 | As ativações | Degustação e time preparado |
-| 09 | Onde acontece | 5 lojas + 4 canais próprios |
+| 09 | Onde acontece | 5 lojas + 3 canais próprios |
 | 10 | Como medimos | KPIs de giro, ruptura, execução e recompra |
 | 11 | Prazo e aprovações | Cronograma de 7 semanas + governança |
 | 12 | Próxima decisão | Call to action e 5 próximos passos |
