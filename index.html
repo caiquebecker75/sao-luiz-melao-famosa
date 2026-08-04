@@ -390,6 +390,12 @@ strong{font-weight:600;color:var(--white)}
   background:linear-gradient(90deg,var(--lime),transparent);animation:sweepbar 3.2s ease-in-out infinite}
 @keyframes sweepbar{0%,100%{transform:translateX(-100%)}50%{transform:translateX(0)}}
 .act-h{display:flex;align-items:center;gap:13px}
+.act-logo{height:clamp(19px,1.65vw,26px);width:auto;margin-left:auto;opacity:.95;flex:none;animation:afloat 4.2s ease-in-out infinite}
+.destaque{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
+  font-size:clamp(11px,.92vw,15px);font-weight:700;letter-spacing:.06em;color:#0A2044;
+  background:linear-gradient(100deg,var(--lime) 0%,#B7E356 100%);padding:8px 16px;border-radius:100px;
+  box-shadow:0 8px 22px rgba(140,198,63,.24)}
+.destaque .ico{width:17px;height:17px}
 .act-n{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.2em;color:var(--muted-dim)}
 .act-t{font-size:clamp(14px,1.22vw,20px);font-weight:700;letter-spacing:.02em;line-height:1.15}
 .act ul{display:flex;flex-direction:column;gap:8px}
@@ -421,20 +427,6 @@ strong{font-weight:600;color:var(--white)}
 .kpi:hover{transform:translateY(-6px);border-color:rgba(168,220,75,.45)}
 .kpi .kh{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .kpi .kl{font-size:clamp(9.5px,.74vw,12px);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-
-/* 11 INVESTIMENTO */
-.inv-row{display:grid;grid-template-columns:1fr clamp(84px,7.5vw,120px);gap:clamp(10px,1.2vw,20px);align-items:center;
-  padding:clamp(6px,.62vw,10px) 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.inv-l{display:flex;align-items:center;gap:11px;font-size:clamp(11px,.88vw,14.5px);font-weight:400;color:var(--ice)}
-.inv-bar{flex:1;height:6px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden;min-width:30px}
-.inv-bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--lime),var(--lime-bright));
-  transition:width 1.1s cubic-bezier(.2,.8,.3,1)}
-.inv-v{text-align:right;font-size:clamp(11.5px,.92vw,15px);font-weight:600;font-variant-numeric:tabular-nums}
-.inv-total{
-  border-radius:var(--radius);padding:clamp(18px,1.9vw,34px);
-  background:linear-gradient(150deg,rgba(140,198,63,.16),rgba(27,76,168,.16));
-  border:1px solid rgba(168,220,75,.4);display:flex;flex-direction:column;justify-content:center;gap:6px;height:100%
-}
 
 /* 12 CRONOGRAMA */
 .tl{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(6px,.7vw,12px);position:relative}
@@ -539,35 +531,6 @@ strong{font-weight:600;color:var(--white)}
   padding:6px 13px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--card-brd);transition:.3s}
 .extra > span:not(.extra-l):hover{border-color:rgba(168,220,75,.4);color:var(--ice)}
 
-/* ---------- 11 · DONUT ---------- */
-.donut-wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,3vw,58px);align-items:center}
-.donut{position:relative;width:clamp(180px,17vw,268px);height:clamp(180px,17vw,268px);flex:none}
-.donut svg{width:100%;height:100%;transform:rotate(0deg)}
-.don-s{transition:stroke-dasharray 1.3s cubic-bezier(.2,.8,.3,1)}
-.donut-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.dc-l{font-size:clamp(9px,.7vw,11.5px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-dim)}
-.dc-v{font-size:clamp(21px,2.05vw,34px);font-weight:800;letter-spacing:-.035em;
-  background:linear-gradient(135deg,#fff,var(--lime-bright));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.dc-h{font-size:clamp(9.5px,.74vw,12px);font-weight:400;color:var(--muted);margin-top:3px}
-.legend{display:flex;flex-direction:column;gap:clamp(6px,.62vw,10px);max-width:760px}
-.legend li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(11px,1.1vw,17px);
-  padding:clamp(8px,.78vw,13px) clamp(12px,1.15vw,18px);border-radius:13px;
-  background:rgba(255,255,255,.04);border:1px solid var(--card-brd);transition:.35s}
-.legend li:hover{background:rgba(255,255,255,.085);transform:translateX(5px)}
-.dotc{width:11px;height:11px;border-radius:50%;flex:none;box-shadow:0 0 0 4px rgba(255,255,255,.05);animation:dotp 2.6s ease-in-out infinite}
-@keyframes dotp{0%,100%{box-shadow:0 0 0 3px rgba(255,255,255,.04)}50%{box-shadow:0 0 0 6px rgba(255,255,255,.09)}}
-.legend li:nth-child(2) .dotc{animation-delay:.3s}
-.legend li:nth-child(3) .dotc{animation-delay:.6s}
-.legend li:nth-child(4) .dotc{animation-delay:.9s}
-.legend li:nth-child(5) .dotc{animation-delay:1.2s}
-.ln b{display:block;font-size:clamp(11.5px,.92vw,15px);font-weight:600;color:var(--white)}
-.ln em{font-style:normal;font-size:clamp(10px,.76vw,12.5px);font-weight:300;color:var(--muted-dim)}
-.lv{font-size:clamp(12px,.96vw,16px);font-weight:700;font-variant-numeric:tabular-nums;color:var(--lime-bright)}
-.folga{display:flex;align-items:center;gap:11px;margin-top:clamp(14px,1.6vw,24px);
-  font-size:clamp(10.5px,.82vw,13.5px);font-weight:300;color:var(--muted);
-  padding:clamp(10px,.95vw,15px) clamp(13px,1.2vw,19px);border-radius:13px;
-  background:var(--gold-soft);border:1px solid rgba(233,169,60,.28)}
-
 /* ---------- RESPONSIVO ---------- */
 @media (max-width:1024px){
   .flow{grid-template-columns:1fr;gap:12px}
@@ -579,8 +542,6 @@ strong{font-weight:600;color:var(--white)}
   .tl{grid-template-columns:repeat(4,1fr);gap:16px}
   .tl-line{display:none}
   .close-grid{grid-template-columns:1fr}
-  .donut-wrap{grid-template-columns:1fr;justify-items:center;gap:20px}
-  .legend{width:100%}
 }
 @media (max-width:760px){
   .deck{scroll-snap-type:none}
@@ -599,9 +560,6 @@ strong{font-weight:600;color:var(--white)}
   .hs em{display:none}
   #s5 .rv[style]{grid-template-columns:1fr!important}
   .ring{width:104px;height:104px}
-  .donut{width:200px;height:200px}
-  .legend li{grid-template-columns:auto 1fr;row-gap:4px}
-  .lv{grid-column:2}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
@@ -655,7 +613,7 @@ strong{font-weight:600;color:var(--white)}
       <div><div class="bn-sm" data-count="5">0</div><div class="bn-lab">Lojas no piloto</div></div>
       <div><div class="bn-sm" data-count="4">0</div><div class="bn-lab">Semanas de ativação</div></div>
       <div><div class="bn-sm" data-count="6">0</div><div class="bn-lab">Peças exclusivas</div></div>
-      <div><div class="bn-sm">R$ <span data-count="49.5" data-dec="1">0</span> mil</div><div class="bn-lab">Investimento total</div></div>
+      <div><div class="bn-sm" data-count="2">0</div><div class="bn-lab">Ativações na loja</div></div>
     </div>
   </div>
 </section>
@@ -1037,21 +995,25 @@ strong{font-weight:600;color:var(--white)}
 <section class="slide" id="s8">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">08</span> As três ativações</div>
+    <div class="s-kicker"><span class="n">08</span> As ativações</div>
   </header>
 
   <div class="s-body">
     <div class="rv" style="margin-bottom:clamp(16px,2vw,28px)">
       <span class="eyebrow">O que acontece nas 4 semanas</span>
-      <h2>Prova na loja, time preparado e <span class="lime">Clube trazendo de volta</span></h2>
+      <h2>Prova na banca e <span class="lime">time preparado para indicar</span></h2>
     </div>
 
-    <div class="g3 rv" style="align-items:stretch">
+    <div class="g2 rv" style="align-items:stretch">
       <!-- 1 -->
       <div class="act">
         <div class="act-h">
           <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/><circle class="a-pulse" cx="12" cy="7" r="1.4"/></svg></span></div>
           <div><div class="act-n">ATIVAÇÃO 01</div><div class="act-t">Hora do Mais Doce</div></div>
+        </div>
+        <div class="destaque">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path class="a-float" d="M7 3h10l-1.2 7.2a4 4 0 0 1-7.6 0L7 3z"/><path d="M12 14v6M8.5 21h7"/></svg></span>
+          Degustação
         </div>
         <p class="sub" style="font-size:clamp(11px,.85vw,14px)"><strong>Dentro do hortifrúti</strong>, encaixada na bancada. Sem ilha extra.</p>
         <ul>
@@ -1070,6 +1032,7 @@ strong{font-weight:600;color:var(--white)}
         <div class="act-h">
           <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="3.2"/><path class="a-float" d="M2.5 20c0-3.2 2.9-5.4 6.5-5.4s6.5 2.2 6.5 5.4"/><path class="a-pulse" d="M17 4.8a3.2 3.2 0 0 1 0 5.6M19.5 20c0-2.3-1-4-2.6-5"/></svg></span></div>
           <div><div class="act-n">ATIVAÇÃO 02</div><div class="act-t">Time que Escolhe Bem</div></div>
+          <img class="act-logo" src="assets/logo-famosa-mais.png" alt="Famosa+">
         </div>
         <p class="sub" style="font-size:clamp(11px,.85vw,14px)">Programa <strong>exclusivo da rede</strong>, com linguagem São Luiz.</p>
         <ul>
@@ -1083,36 +1046,20 @@ strong{font-weight:600;color:var(--white)}
         </div>
       </div>
 
-      <!-- 3 -->
-      <div class="act">
-        <div class="act-h">
-          <div class="ico-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#A8DC4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-spin" d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/><circle class="a-pulse" cx="12" cy="12" r="2.4"/></svg></span></div>
-          <div><div class="act-n">ATIVAÇÃO 03</div><div class="act-t">Clube São Luiz</div></div>
-        </div>
-        <p class="sub" style="font-size:clamp(11px,.85vw,14px)">O CRM transforma <strong>quem provou em quem volta</strong>.</p>
-        <ul>
-          <li><b>Semana 1</b> — benefício no Clube + push</li>
-          <li><b>Semanas 2 e 3</b> — conteúdo, origem e receita</li>
-          <li><b>Semana 4</b> — oferta de recompra</li>
-        </ul>
-        <div class="act-foot">
-          <span class="pill pill-gold">fundo promocional R$ 4.500</span>
-        </div>
-      </div>
     </div>
 
     <div class="rv quote-band" style="margin-top:clamp(16px,1.8vw,26px)">
       <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="a-draw" style="stroke-dasharray:40" d="M3 17l5.5-5.5 4 4L21 7"/><path class="a-blink" d="M15 7h6v6"/></svg></span></div>
       <div>
-        <div class="ql">A mecânica que sustenta o resultado</div>
-        <p class="sub" style="font-size:clamp(12px,.92vw,15px)">Desconto abre a porta. Quem segura o cliente é a <strong>doçura comprovada</strong>.</p>
+        <div class="ql">O que sustenta o resultado</div>
+        <p class="sub" style="font-size:clamp(12px,.92vw,15px)">A prova tira a dúvida. A indicação do time <strong>fecha a compra</strong>.</p>
       </div>
     </div>
   </div>
 
   <div class="s-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
-    Calendário, mecânica do Clube e prêmio definidos com a rede.
+    Calendário dos sábados e formato do prêmio definidos com a rede.
   </div>
 </section>
 
@@ -1262,81 +1209,11 @@ strong{font-weight:600;color:var(--white)}
   </div>
 </section>
 
-<!-- ══════════════ 11 · INVESTIMENTO ══════════════ -->
-<section class="slide" id="s11">
-  <header class="s-top">
-    <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">11</span> Investimento</div>
-  </header>
-
-  <div class="s-body">
-    <div class="rv" style="margin-bottom:clamp(14px,1.8vw,28px)">
-      <span class="eyebrow">Onde vai o recurso</span>
-      <h2>Tudo fecha em <span class="lime">R$ 49.500</span></h2>
-    </div>
-
-    <div class="rv donut-wrap">
-      <div class="donut">
-        <svg viewBox="0 0 140 140">
-          <circle class="don-s" cx="70" cy="70" r="54" fill="none" stroke="#8CC63F" stroke-width="18" stroke-linecap="butt"
-                  stroke-dasharray="0 339.3" data-dash="86.8 252.5"
-                  transform="rotate(-90.00 70 70)" style="transition-delay:0.10s"/>
-          <circle class="don-s" cx="70" cy="70" r="54" fill="none" stroke="#4E86E0" stroke-width="18" stroke-linecap="butt"
-                  stroke-dasharray="0 339.3" data-dash="83.1 256.2"
-                  transform="rotate(4.68 70 70)" style="transition-delay:0.23s"/>
-          <circle class="don-s" cx="70" cy="70" r="54" fill="none" stroke="#E9A93C" stroke-width="18" stroke-linecap="butt"
-                  stroke-dasharray="0 339.3" data-dash="62.7 276.5"
-                  transform="rotate(95.40 70 70)" style="transition-delay:0.36s"/>
-          <circle class="don-s" cx="70" cy="70" r="54" fill="none" stroke="#B7E356" stroke-width="18" stroke-linecap="butt"
-                  stroke-dasharray="0 339.3" data-dash="49.2 290.1"
-                  transform="rotate(164.52 70 70)" style="transition-delay:0.49s"/>
-          <circle class="don-s" cx="70" cy="70" r="54" fill="none" stroke="#8CA4CE" stroke-width="18" stroke-linecap="butt"
-                  stroke-dasharray="0 339.3" data-dash="45.4 293.9"
-                  transform="rotate(219.24 70 70)" style="transition-delay:0.62s"/>
-        </svg>
-        <div class="donut-c">
-          <span class="dc-l">total</span>
-          <span class="dc-v">R$ <i data-count="49500" data-fmt="1">0</i></span>
-          <span class="dc-h">5 lojas · 4 semanas</span>
-        </div>
-      </div>
-
-      <ul class="legend">
-        <li><span class="dotc" style="background:#8CC63F"></span>
-          <span class="ln"><b>Ativação em loja</b><em>degustação + treinamento e prêmio</em></span>
-          <span class="lv">R$ 13.000</span></li>
-        <li><span class="dotc" style="background:#4E86E0"></span>
-          <span class="ln"><b>Produção e instalação</b><em>peças das 5 lojas + logística</em></span>
-          <span class="lv">R$ 12.500</span></li>
-        <li><span class="dotc" style="background:#E9A93C"></span>
-          <span class="ln"><b>Criação e artes</b><em>território, KV, levantamento e protótipos</em></span>
-          <span class="lv">R$ 9.500</span></li>
-        <li><span class="dotc" style="background:#B7E356"></span>
-          <span class="ln"><b>CRM e conteúdo</b><em>fundo do Clube + canais próprios</em></span>
-          <span class="lv">R$ 7.500</span></li>
-        <li><span class="dotc" style="background:#8CA4CE"></span>
-          <span class="ln"><b>Gestão e reserva</b><em>supervisão, dados, relatório e contingência</em></span>
-          <span class="lv">R$ 7.000</span></li>
-      </ul>
-    </div>
-
-    <div class="rv folga">
-      <span class="ico" style="width:17px;height:17px"><svg viewBox="0 0 24 24" fill="none" stroke="#E9A93C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-float" cx="12" cy="12" r="8.5"/><path class="a-tick" d="M8.4 12.4l2.5 2.5 4.7-5"/></svg></span>
-      Dentro do teto acordado, com <strong class="gold">R$ 500 de folga</strong> e R$ 2.500 de contingência já reservados.
-    </div>
-  </div>
-
-  <div class="s-note">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
-    Estimativas de planejamento; produção final depende de medidas e cotação.
-  </div>
-</section>
-
 <!-- ══════════════ 12 · CRONOGRAMA E GOVERNANÇA ══════════════ -->
 <section class="slide" id="s12">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">12</span> Prazo e aprovações</div>
+    <div class="s-kicker"><span class="n">11</span> Prazo e aprovações</div>
   </header>
 
   <div class="s-body">
@@ -1426,7 +1303,7 @@ strong{font-weight:600;color:var(--white)}
 <section class="slide" id="s13">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">13</span> Próxima decisão</div>
+    <div class="s-kicker"><span class="n">12</span> Próxima decisão</div>
   </header>
 
   <div class="s-body">
@@ -1443,16 +1320,16 @@ strong{font-weight:600;color:var(--white)}
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></span>
             Vamos começar pelo levantamento
           </a>
-          <a class="cta-ghost" href="#s11">
-            <span class="ico" style="width:17px;height:17px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M9.4 9.5h4.2a1.8 1.8 0 0 1 0 3.6h-3a1.8 1.8 0 0 0 0 3.6h4.2"/></svg></span>
-            Rever o investimento
+          <a class="cta-ghost" href="#s7">
+            <span class="ico" style="width:17px;height:17px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg></span>
+            Rever as peças
           </a>
         </div>
 
         <div class="close-bn">
           <div><div class="bn-sm" data-count="5">0</div><div class="bn-lab">Lojas</div></div>
           <div><div class="bn-sm" data-count="4">0</div><div class="bn-lab">Semanas</div></div>
-          <div><div class="bn-sm">R$ <span data-count="49500" data-fmt="1">0</span></div><div class="bn-lab">Investimento</div></div>
+          <div><div class="bn-sm" data-count="6">0</div><div class="bn-lab">Peças</div></div>
         </div>
       </div>
 
@@ -1466,8 +1343,8 @@ strong{font-weight:600;color:var(--white)}
             <li><span class="nn">1</span> Visitar e medir as cinco lojas</li>
             <li><span class="nn">2</span> Validar o key visual e a hierarquia</li>
             <li><span class="nn">3</span> Aprovar as seis peças exclusivas</li>
-            <li><span class="nn">4</span> Fechar mecânica do Clube e calendário</li>
-            <li><span class="nn">5</span> Cotar produção dentro do teto</li>
+            <li><span class="nn">4</span> Alinhar o treinamento das equipes</li>
+            <li><span class="nn">5</span> Definir o calendário dos sábados de prova</li>
           </ul>
         </div>
 
@@ -1543,7 +1420,6 @@ strong{font-weight:600;color:var(--white)}
         en.target.querySelectorAll('[data-count]').forEach(runCount);
         en.target.querySelectorAll('.bar-fill').forEach(f=>{ f.style.width = f.dataset.w+'%'; });
         en.target.querySelectorAll('.ring-f').forEach(r=>{ r.style.strokeDashoffset = r.dataset.off; });
-        en.target.querySelectorAll('.don-s').forEach(d=>{ d.setAttribute('stroke-dasharray', d.dataset.dash); });
       }
     });
   },{threshold:[.45,.6], root:deck});

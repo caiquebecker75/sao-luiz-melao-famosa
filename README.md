@@ -1,7 +1,7 @@
 # São Luiz × Melão Famosa — Estratégia de Trade Exclusiva
 
-Apresentação HTML (deck de 13 telas) desenvolvida pela **75 LAB** para o time de varejo do
-**Super Mercadinhos São Luiz**, propondo um piloto exclusivo de trade marketing para o **Melão Famosa**.
+Apresentação HTML (deck de 12 telas) desenvolvida pela **75 LAB** para o time de varejo do
+**Super Mercadinhos São Luiz**, propondo um piloto exclusivo de trade marketing para o **Melão Famosa** em 5 lojas.
 
 🔗 **Link público:** https://projetos.75lab.com.br/sao-luiz-melao-famosa/
 
@@ -16,12 +16,11 @@ Apresentação HTML (deck de 13 telas) desenvolvida pela **75 LAB** para o time 
 | 05 | Regras na loja | Entra / Não entra + limite de 15% |
 | 06 | A jornada do cliente | 5 pontos conectados + mockup de PDV |
 | 07 | O enxoval | As 6 peças exclusivas |
-| 08 | As três ativações | Degustação, time e Clube |
+| 08 | As ativações | Degustação e time preparado |
 | 09 | Onde acontece | 5 lojas + 4 canais próprios |
 | 10 | Como medimos | KPIs de giro, ruptura, execução e recompra |
-| 11 | Investimento | Composição dos R$ 49.500 |
-| 12 | Prazo e aprovações | Cronograma de 7 semanas + governança |
-| 13 | Próxima decisão | Call to action e 5 próximos passos |
+| 11 | Prazo e aprovações | Cronograma de 7 semanas + governança |
+| 12 | Próxima decisão | Call to action e 5 próximos passos |
 
 ## Como navegar
 
@@ -41,4 +40,4 @@ Sem dependências externas além da fonte Poppins (Google Fonts).
 
 ---
 
-© 75 LAB — proposta comercial. Valores e metas são estimativas de planejamento.
+© 75 LAB — proposta comercial. Metas são parâmetros de planejamento do piloto.
