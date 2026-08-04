@@ -3,7 +3,7 @@
 Apresentação HTML (deck de 13 telas) desenvolvida pela **75 LAB** para o time de varejo do
 **Super Mercadinhos São Luiz**, propondo um piloto exclusivo de trade marketing para o **Melão Famosa**.
 
-🔗 **Link público:** https://caiquebecker75.github.io/sao-luiz-melao-famosa/
+🔗 **Link público:** https://projetos.75lab.com.br/sao-luiz-melao-famosa/
 
 ## Estrutura do deck
 
