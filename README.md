@@ -1,6 +1,6 @@
 # São Luiz × Melão Famosa — Estratégia de Trade Exclusiva
 
-Apresentação HTML (deck de 12 telas) desenvolvida pela **75 LAB** para o time de varejo do
+Apresentação HTML (deck de 13 telas) desenvolvida pela **75 LAB** para o time de varejo do
 **Super Mercadinhos São Luiz**, propondo um piloto exclusivo de trade marketing para o **Melão Famosa** em 5 lojas.
 
 🔗 **Link público:** https://projetos.75lab.com.br/sao-luiz-melao-famosa/
@@ -13,14 +13,15 @@ Apresentação HTML (deck de 12 telas) desenvolvida pela **75 LAB** para o time 
 | 02 | O ponto de partida | Não é / É — a virada de chave |
 | 03 | Como funciona | Fluxo em 3 passos: escolhe → comprova → decide |
 | 04 | Quem assina o quê | Hierarquia de marcas 60 / 30 / 10 |
-| 05 | As peças aplicadas | Foto do enxoval na banca |
-| 06 | A jornada do cliente | 5 pontos conectados + mockup de PDV |
-| 07 | O enxoval | As 6 peças exclusivas |
-| 08 | As ativações | Degustação, time preparado e peças de PDV |
-| 09 | Onde acontece | 2 níveis de loja comparados + canais |
-| 10 | Como medimos | KPIs de giro, ruptura, execução e recompra |
-| 11 | Prazo e aprovações | Cronograma de 7 semanas + governança |
-| 12 | Próxima decisão | Call to action e 5 próximos passos |
+| 05 | Key visual | KV exclusivo em tela cheia |
+| 06 | As peças aplicadas | Foto do enxoval na banca |
+| 07 | A jornada do cliente | 5 pontos conectados + prova |
+| 08 | As peças | Mockups da tag, dos selos e do adesivo de bandeja |
+| 09 | As ativações | Degustação, time preparado e peças de PDV |
+| 10 | Onde acontece | 2 níveis de loja comparados + canais |
+| 11 | Como medimos | KPIs de giro, ruptura, execução e bandeja |
+| 12 | Prazo e aprovações | Cronograma de 7 semanas + governança |
+| 13 | Próxima decisão | Call to action e 5 próximos passos |
 
 ## Como navegar
 

@@ -344,6 +344,37 @@ strong{font-weight:700}
   transform:scale(1);transition:transform 8s ease-out;animation:slowzoom 24s ease-in-out infinite}
 @keyframes slowzoom{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 
+/* 05 KEY VISUAL — tela cheia, imagem inteira, sem corte */
+.kv-slide{padding:0}
+.kv-slide::after{display:none}
+.kv-slide .s-body{position:absolute;inset:0;z-index:1;padding:0;display:block}
+.kv{margin:0;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.kv img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;
+  animation:kvbreathe 16s ease-in-out infinite}
+@keyframes kvbreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.008)}}
+.kv-slide .s-brand{display:none}
+.kv-slide .s-top{justify-content:flex-end;position:absolute;top:clamp(16px,1.9vw,30px);left:clamp(18px,2.2vw,38px);
+  right:clamp(18px,2.2vw,38px);z-index:4;margin:0;pointer-events:none}
+.kv-slide .s-kicker{background:rgba(7,26,49,.72);backdrop-filter:blur(8px);pointer-events:auto}
+.kv-slide .s-note{position:absolute;left:clamp(18px,2.2vw,38px);right:clamp(18px,2.2vw,38px);
+  bottom:clamp(12px,1.4vw,22px);z-index:4;margin:0;padding:9px 15px;border:none;border-radius:100px;
+  background:rgba(7,26,49,.72);backdrop-filter:blur(8px);width:fit-content;max-width:100%}
+
+/* 08 PEÇAS — mockups reais, sem corte */
+.pecas{align-items:stretch}
+.peca{margin:0;display:flex;flex-direction:column;gap:clamp(9px,.9vw,15px);
+  border-radius:var(--r-lg);padding:clamp(12px,1.15vw,20px);transition:.4s}
+.sk-paper .peca{background:#fff} .sk-ink .peca{background:var(--navy-lift)}
+.peca:hover{transform:translateY(-6px)}
+.peca-img{width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;background:var(--cream-2)}
+.sk-ink .peca-img{background:rgba(243,238,226,.06)}
+.peca-img img{max-width:94%;max-height:94%;width:auto;height:auto;object-fit:contain;display:block;
+  transition:transform .6s cubic-bezier(.2,.8,.3,1)}
+.peca:hover .peca-img img{transform:scale(1.04)}
+.peca figcaption b{display:block;font-family:var(--fd);font-size:clamp(13px,1.1vw,18px);font-weight:700;letter-spacing:-.015em}
+.peca figcaption span{display:block;font-size:clamp(10px,.78vw,13px);font-weight:500;margin-top:3px;opacity:.6}
+
 /* 06 JORNADA */
 .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,.9vw,16px);position:relative}
 .jn{border-radius:var(--r-lg);padding:clamp(14px,1.35vw,23px);display:flex;flex-direction:column;gap:10px;
@@ -554,6 +585,7 @@ strong{font-weight:700}
   .deck{scroll-snap-type:none}
   .slide{min-height:auto;padding:44px 20px 54px}
   .g2,.g3,.g6,.g4,.journey,.g5,.vs{grid-template-columns:1fr}
+  .peca-img{min-height:200px}
   .chan-strip{gap:8px}
   .vs-arrow{width:100%;height:44px;transform:rotate(90deg)}
   .tl{grid-template-columns:repeat(2,1fr)}
@@ -818,11 +850,30 @@ strong{font-weight:700}
   </div>
 </section>
 
+<!-- ══════════════ 05 · KEY VISUAL ══════════════ -->
+<section class="slide sk-ink kv-slide" id="skv">
+  <header class="s-top">
+    <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
+    <div class="s-kicker"><span class="n">05</span> Key visual</div>
+  </header>
+
+  <div class="s-body">
+    <figure class="kv rv">
+      <img src="assets/kv-sao-luiz.jpg" alt="Key visual exclusivo Melão Famosa × São Luiz — Colhemos o mais doce pensando em você">
+    </figure>
+  </div>
+
+  <div class="s-note">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
+    Key visual criado exclusivamente para o São Luiz: o ícone da rede substitui a estrela e conduz o olhar até o melão.
+  </div>
+</section>
+
 <!-- ══════════════ 05 · REGRAS NA LOJA ══════════════ -->
 <section class="slide sk-ink" id="s5">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">05</span> As peças aplicadas</div>
+    <div class="s-kicker"><span class="n">06</span> As peças aplicadas</div>
   </header>
 
   <div class="s-body">
@@ -846,7 +897,7 @@ strong{font-weight:700}
 <section class="slide sk-paper" id="s6">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">06</span> A jornada do cliente</div>
+    <div class="s-kicker"><span class="n">07</span> A jornada do cliente</div>
   </header>
 
   <div class="s-body">
@@ -909,63 +960,37 @@ strong{font-weight:700}
 </section>
 
 <!-- ══════════════ 07 · AS PEÇAS ══════════════ -->
-<section class="slide sk-ink" id="s7">
+<section class="slide sk-paper" id="s7">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">07</span> O enxoval</div>
+    <div class="s-kicker"><span class="n">08</span> As peças</div>
   </header>
 
   <div class="s-body">
-    <div class="rv" style="margin-bottom:clamp(18px,2.2vw,32px);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
-      <div>
-        <span class="eyebrow">Seis peças criadas do zero</span>
-        <h2>No tamanho certo,<br><span class="lime">feitas para o São Luiz</span></h2>
-      </div>
-      <div style="display:flex;gap:clamp(16px,2vw,34px)">
-        <div><div class="bn-sm" data-count="6">0</div><div class="bn-lab">Formatos</div></div>
-        <div><div class="bn-sm" data-count="5">0</div><div class="bn-lab">Lojas atendidas</div></div>
-      </div>
+    <div class="rv" style="margin-bottom:clamp(14px,1.7vw,26px)">
+      <span class="eyebrow">Enxoval exclusivo</span>
+      <h2>Peças criadas do zero para a <span class="mark">banca do São Luiz</span></h2>
     </div>
 
-    <div class="g6 rv">
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="4" y="19" width="56" height="11" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="7" y="23" width="20" height="3" rx="1.5" fill="currentColor"/><rect x="30" y="23" width="27" height="3" rx="1.5" fill="rgba(255,255,255,.34)"/></svg></div>
-        <div><div class="pn">Régua frontal</div><p class="pd">Identifica sem cobrir o móvel.</p><span class="pm">8–10 cm de altura</span></div>
-      </div>
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect x="24.5" y="9" width="15" height="2.6" rx="1.3" fill="rgba(255,255,255,.42)"/><rect class="a-pulse" x="24.5" y="19" width="15" height="9" rx="2" fill="currentColor"/><rect x="24.5" y="32" width="10" height="2.4" rx="1.2" fill="rgba(255,255,255,.28)"/></svg></div>
-        <div><div class="pn">Porta-preço</div><p class="pd">Une preço e promessa de doçura.</p><span class="pm">formato A5</span></div>
-      </div>
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><path class="a-float" d="M32 5v7" stroke="rgba(255,255,255,.4)" stroke-width="1.4" stroke-linecap="round"/><circle class="a-float" cx="32" cy="27" r="15" fill="#12336E" stroke="currentColor" stroke-width="1.4"/><path class="a-tick" d="M26 27.5l4 4 8-8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><div class="pn">Tag da fruta</div><p class="pd">Selo “Escolha São Luiz” na fruta.</p><span class="pm">diâmetro 7 cm</span></div>
-      </div>
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="21" y="5" width="22" height="38" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><rect class="a-slide" x="24.5" y="10" width="12" height="2.6" rx="1.3" fill="currentColor"/><rect x="24.5" y="17" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="23" width="15" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="29" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/><rect x="24.5" y="35" width="8" height="2.2" rx="1.1" fill="rgba(255,255,255,.18)"/></svg></div>
-        <div><div class="pn">Card de escolha</div><p class="pd">Ensina a reconhecer ponto e aroma.</p><span class="pm">formato A5</span></div>
-      </div>
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="15" y="14" width="34" height="21" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><circle class="a-pulse" cx="22.5" cy="24.5" r="4" fill="currentColor"/><rect x="30" y="20" width="15" height="2.4" rx="1.2" fill="rgba(255,255,255,.4)"/><rect x="30" y="26" width="11" height="2.4" rx="1.2" fill="rgba(255,255,255,.24)"/></svg></div>
-        <div><div class="pn">Etiqueta de bandeja</div><p class="pd">Assinatura mantida após o corte.</p><span class="pm">10 × 7 cm</span></div>
-      </div>
-      <div class="piece">
-        <div class="pv"><svg viewBox="0 0 64 48" fill="none"><rect class="pv-sh" x="1" y="1" width="62" height="46" rx="7" fill="rgba(255,255,255,.03)"/><rect x="24" y="9" width="17" height="30" rx="2.5" fill="#12336E" stroke="#4E86E0" stroke-width="1"/><path class="a-float" d="M29 14h7l-.9 5a2.7 2.7 0 0 1-5.2 0L29 14z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M32.5 21v5M30 26.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="27" y="31" width="11" height="2.2" rx="1.1" fill="rgba(255,255,255,.3)"/></svg></div>
-        <div><div class="pn">Card de prova</div><p class="pd">Roteiro da degustação para a equipe.</p><span class="pm">formato A6</span></div>
-      </div>
-    </div>
-
-    <div class="rv quote-band" style="margin-top:clamp(16px,1.8vw,26px)">
-      <div class="ico-box gold-box"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="a-spin" cx="12" cy="12" r="8" stroke-dasharray="4 5"/><circle class="a-pulse" cx="12" cy="12" r="3"/></svg></span></div>
-      <div>
-        <div class="ql">Diretriz de criação</div>
-        <p class="sub" style="font-size:clamp(12px,.92vw,15px)">Azul como <strong>assinatura pontual</strong>, nunca como massa dominante.</p>
-      </div>
+    <div class="g3 rv pecas">
+      <figure class="peca">
+        <div class="peca-img"><img src="assets/peca-tag-frente-verso.jpg" alt="Tag de fruta — frente e verso"></div>
+        <figcaption><b>Tag da fruta</b><span>frente e verso · 10 × 5 cm</span></figcaption>
+      </figure>
+      <figure class="peca">
+        <div class="peca-img"><img src="assets/peca-tag-selos.jpg" alt="Tag de fruta com os selos de origem e doçura"></div>
+        <figcaption><b>Selos de garantia</b><span>cultivo consciente · sabor garantido</span></figcaption>
+      </figure>
+      <figure class="peca">
+        <div class="peca-img"><img src="assets/peca-adesivo-bandeja.jpg" alt="Adesivo aplicado na bandeja de melão cortado"></div>
+        <figcaption><b>Adesivo de bandeja</b><span>15 × 10 cm · pronto para servir</span></figcaption>
+      </figure>
     </div>
   </div>
 
   <div class="s-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01" stroke-linecap="round"/></svg>
-    Medidas indicativas, confirmadas na visita técnica.
+    Medidas confirmadas na visita técnica antes da produção.
   </div>
 </section>
 
@@ -973,7 +998,7 @@ strong{font-weight:700}
 <section class="slide sk-paper" id="s8">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">08</span> As ativações</div>
+    <div class="s-kicker"><span class="n">09</span> As ativações</div>
   </header>
 
   <div class="s-body">
@@ -1069,7 +1094,7 @@ strong{font-weight:700}
 <section class="slide sk-ink" id="s9">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">09</span> Onde acontece</div>
+    <div class="s-kicker"><span class="n">10</span> Onde acontece</div>
   </header>
 
   <div class="s-body">
@@ -1124,7 +1149,7 @@ strong{font-weight:700}
 <section class="slide sk-paper" id="s10">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">10</span> Como medimos</div>
+    <div class="s-kicker"><span class="n">11</span> Como medimos</div>
   </header>
 
   <div class="s-body">
@@ -1201,7 +1226,7 @@ strong{font-weight:700}
 <section class="slide sk-ink" id="s12">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">11</span> Prazo e aprovações</div>
+    <div class="s-kicker"><span class="n">12</span> Prazo e aprovações</div>
   </header>
 
   <div class="s-body">
@@ -1291,7 +1316,7 @@ strong{font-weight:700}
 <section class="slide sk-ink" id="s13">
   <header class="s-top">
     <div class="s-brand"><img src="assets/logo-sao-luiz-branco.png" alt="São Luiz"><span class="sep"></span><img src="assets/logo-melao-famosa-branco.png" alt="Melão Famosa"></div>
-    <div class="s-kicker"><span class="n">12</span> Próxima decisão</div>
+    <div class="s-kicker"><span class="n">13</span> Próxima decisão</div>
   </header>
 
   <div class="s-body">
